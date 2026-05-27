@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: iptv-autocura
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn api:app
