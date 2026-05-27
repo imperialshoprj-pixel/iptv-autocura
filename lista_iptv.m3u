@@ -1,0 +1,604 @@
+#EXTM3U
+
+#EXTINF:-1 group-title="Globo",GLOBO SP SD
+https://iptv-autocura-1.onrender.com/canal/492
+#EXTINF:-1 group-title="Globo",GLOBO RJ HD
+https://iptv-autocura-1.onrender.com/canal/335
+#EXTINF:-1 group-title="Globo",GLOBO RJ SD
+https://iptv-autocura-1.onrender.com/canal/491
+#EXTINF:-1 group-title="Globo",GLOBO NEWS HD
+https://iptv-autocura-1.onrender.com/canal/35
+
+#EXTINF:-1 group-title="Canais de TV",A&E HD
+https://iptv-autocura-1.onrender.com/canal/1
+#EXTINF:-1 group-title="Canais de TV",AMC HD
+https://iptv-autocura-1.onrender.com/canal/2
+#EXTINF:-1 group-title="Canais de TV",ANIMAL PLANET HD
+https://iptv-autocura-1.onrender.com/canal/3
+#EXTINF:-1 group-title="Canais de TV",ARTE 1 HD
+https://iptv-autocura-1.onrender.com/canal/130
+#EXTINF:-1 group-title="Canais de TV",AXN HD
+https://iptv-autocura-1.onrender.com/canal/4
+#EXTINF:-1 group-title="Canais de TV",BAND NEWS HD
+https://iptv-autocura-1.onrender.com/canal/103
+#EXTINF:-1 group-title="Esportes",BAND SPORTS HD
+https://iptv-autocura-1.onrender.com/canal/5
+#EXTINF:-1 group-title="Canais de TV",BIS HD
+https://iptv-autocura-1.onrender.com/canal/6
+#EXTINF:-1 group-title="Canais de TV",CANAL BRASIL HD
+https://iptv-autocura-1.onrender.com/canal/135
+#EXTINF:-1 group-title="Canais de TV",CANAL SONY HD
+https://iptv-autocura-1.onrender.com/canal/7
+#EXTINF:-1 group-title="Infantil",CARTOON NETWORK HD
+https://iptv-autocura-1.onrender.com/canal/8
+#EXTINF:-1 group-title="Canais de TV",CINEMAX HD
+https://iptv-autocura-1.onrender.com/canal/9
+#EXTINF:-1 group-title="Canais de TV",CNN BRASIL HD
+https://iptv-autocura-1.onrender.com/canal/102
+#EXTINF:-1 group-title="Esportes",COMBATE HD
+https://iptv-autocura-1.onrender.com/canal/10
+#EXTINF:-1 group-title="Documentarios",DISCOVERY CHANNEL HD
+https://iptv-autocura-1.onrender.com/canal/12
+#EXTINF:-1 group-title="Documentarios",DISCOVERY H&H HD
+https://iptv-autocura-1.onrender.com/canal/14
+#EXTINF:-1 group-title="Infantil",DISCOVERY KIDS HD
+https://iptv-autocura-1.onrender.com/canal/15
+#EXTINF:-1 group-title="Documentarios",DISCOVERY SCIENCE HD
+https://iptv-autocura-1.onrender.com/canal/16
+#EXTINF:-1 group-title="Documentarios",DISCOVERY THEATER HD
+https://iptv-autocura-1.onrender.com/canal/17
+#EXTINF:-1 group-title="Documentarios",DISCOVERY TURBO HD
+https://iptv-autocura-1.onrender.com/canal/18
+#EXTINF:-1 group-title="Documentarios",DISCOVERY WORLD HD
+https://iptv-autocura-1.onrender.com/canal/19
+#EXTINF:-1 group-title="Canais de TV",E! HD
+https://iptv-autocura-1.onrender.com/canal/22
+#EXTINF:-1 group-title="Infantil",GLOOB HD
+https://iptv-autocura-1.onrender.com/canal/37
+#EXTINF:-1 group-title="Canais de TV",GNT HD
+https://iptv-autocura-1.onrender.com/canal/38
+
+#EXTINF:-1 group-title="HBO",HBO 2 HD
+https://iptv-autocura-1.onrender.com/canal/39
+#EXTINF:-1 group-title="HBO",HBO FAMILY HD
+https://iptv-autocura-1.onrender.com/canal/40
+#EXTINF:-1 group-title="HBO",HBO HD
+https://iptv-autocura-1.onrender.com/canal/41
+#EXTINF:-1 group-title="HBO",HBO PLUS HD
+https://iptv-autocura-1.onrender.com/canal/42
+#EXTINF:-1 group-title="HBO",HBO PLUS SD
+https://iptv-autocura-1.onrender.com/canal/497
+#EXTINF:-1 group-title="HBO",HBO POP HD
+https://iptv-autocura-1.onrender.com/canal/262
+#EXTINF:-1 group-title="HBO",HBO POP SD
+https://iptv-autocura-1.onrender.com/canal/50
+#EXTINF:-1 group-title="HBO",HBO SIGNATURE H265
+https://iptv-autocura-1.onrender.com/canal/253
+#EXTINF:-1 group-title="HBO",HBO SIGNATURE HD
+https://iptv-autocura-1.onrender.com/canal/43
+#EXTINF:-1 group-title="HBO",HBO SIGNATURE SD
+https://iptv-autocura-1.onrender.com/canal/498
+#EXTINF:-1 group-title="HBO",HBO XTREME FHD H265
+https://iptv-autocura-1.onrender.com/canal/261
+#EXTINF:-1 group-title="HBO",HBO XTREME HD
+https://iptv-autocura-1.onrender.com/canal/49
+#EXTINF:-1 group-title="HBO",HBO XTREME SD
+https://iptv-autocura-1.onrender.com/canal/76662
+
+#EXTINF:-1 group-title="Canais de TV",HGTV H265
+https://iptv-autocura-1.onrender.com/canal/225
+#EXTINF:-1 group-title="Canais de TV",HGTV HD
+https://iptv-autocura-1.onrender.com/canal/13
+#EXTINF:-1 group-title="Documentarios",HISTORY H265
+https://iptv-autocura-1.onrender.com/canal/255
+#EXTINF:-1 group-title="Documentarios",HISTORY HD
+https://iptv-autocura-1.onrender.com/canal/45
+#EXTINF:-1 group-title="Documentarios",HISTORY SD
+https://iptv-autocura-1.onrender.com/canal/584
+#EXTINF:-1 group-title="Documentarios",HISTORY 2 H265
+https://iptv-autocura-1.onrender.com/canal/256
+#EXTINF:-1 group-title="Documentarios",HISTORY 2 HD
+https://iptv-autocura-1.onrender.com/canal/44
+#EXTINF:-1 group-title="Documentarios",HISTORY 2 SD
+https://iptv-autocura-1.onrender.com/canal/500
+#EXTINF:-1 group-title="Variedades",HELLO TV
+https://iptv-autocura-1.onrender.com/canal/63867
+#EXTINF:-1 group-title="Variedades",INSPIRE TV
+https://iptv-autocura-1.onrender.com/canal/63866
+#EXTINF:-1 group-title="Documentarios",INVESTIGAÇAO DISCOVERY H265
+https://iptv-autocura-1.onrender.com/canal/257
+#EXTINF:-1 group-title="Documentarios",INVESTIGAÇAO DISCOVERY HD
+https://iptv-autocura-1.onrender.com/canal/46
+#EXTINF:-1 group-title="Documentarios",INVESTIGAÇAO DISCOVERY SD
+https://iptv-autocura-1.onrender.com/canal/501
+#EXTINF:-1 group-title="Variedades",ISTV HD
+https://iptv-autocura-1.onrender.com/canal/31746
+#EXTINF:-1 group-title="Noticias",JOVEM PAN SD
+https://iptv-autocura-1.onrender.com/canal/76660
+#EXTINF:-1 group-title="Variedades",LBV - BOA VONTADE
+https://iptv-autocura-1.onrender.com/canal/53957
+
+#EXTINF:-1 group-title="Canais de TV",LIFETIME H265
+https://iptv-autocura-1.onrender.com/canal/258
+#EXTINF:-1 group-title="Canais de TV",LIFETIME HD
+https://iptv-autocura-1.onrender.com/canal/47
+#EXTINF:-1 group-title="Canais de TV",LIFETIME SD
+https://iptv-autocura-1.onrender.com/canal/503
+
+#EXTINF:-1 group-title="Filmes",MEGAPIX FHD H265
+https://iptv-autocura-1.onrender.com/canal/263
+#EXTINF:-1 group-title="Filmes",MEGAPIX HD
+https://iptv-autocura-1.onrender.com/canal/51
+#EXTINF:-1 group-title="Filmes",MEGAPIX SD
+https://iptv-autocura-1.onrender.com/canal/507
+
+#EXTINF:-1 group-title="Canais de TV",MTV H265
+https://iptv-autocura-1.onrender.com/canal/264
+#EXTINF:-1 group-title="Canais de TV",MTV HD
+https://iptv-autocura-1.onrender.com/canal/52
+#EXTINF:-1 group-title="Canais de TV",MTV LIVE HD
+https://iptv-autocura-1.onrender.com/canal/197
+#EXTINF:-1 group-title="Canais de TV",MTV SD
+https://iptv-autocura-1.onrender.com/canal/508
+#EXTINF:-1 group-title="Canais de TV",MULTISHOW H265
+https://iptv-autocura-1.onrender.com/canal/265
+#EXTINF:-1 group-title="Canais de TV",MULTISHOW HD
+https://iptv-autocura-1.onrender.com/canal/53
+#EXTINF:-1 group-title="Canais de TV",MULTISHOW SD
+https://iptv-autocura-1.onrender.com/canal/509
+#EXTINF:-1 group-title="Canais de TV",MUSIC BOX BRASIL HD
+https://iptv-autocura-1.onrender.com/canal/511
+#EXTINF:-1 group-title="Canais de TV",MUSIC BOX BRASIL SD
+https://iptv-autocura-1.onrender.com/canal/510
+
+#EXTINF:-1 group-title="Infantil",NICK JR H265
+https://iptv-autocura-1.onrender.com/canal/270
+#EXTINF:-1 group-title="Infantil",NICK JR HD
+https://iptv-autocura-1.onrender.com/canal/58
+#EXTINF:-1 group-title="Infantil",NICK JR SD
+https://iptv-autocura-1.onrender.com/canal/516
+#EXTINF:-1 group-title="Infantil",NICKELODEON H265
+https://iptv-autocura-1.onrender.com/canal/269
+#EXTINF:-1 group-title="Infantil",NICKELODEON HD
+https://iptv-autocura-1.onrender.com/canal/57
+#EXTINF:-1 group-title="Infantil",NICKELODEON SD
+https://iptv-autocura-1.onrender.com/canal/517
+
+#EXTINF:-1 group-title="Religiosos",NOVO TEMPO HD
+https://iptv-autocura-1.onrender.com/canal/106
+#EXTINF:-1 group-title="Religiosos",NOVO TEMPO SD
+https://iptv-autocura-1.onrender.com/canal/586
+
+#EXTINF:-1 group-title="Canais de TV",OFF H265
+https://iptv-autocura-1.onrender.com/canal/271
+#EXTINF:-1 group-title="Canais de TV",OFF HD
+https://iptv-autocura-1.onrender.com/canal/59
+#EXTINF:-1 group-title="Canais de TV",OFF SD
+https://iptv-autocura-1.onrender.com/canal/518
+
+#EXTINF:-1 group-title="Filmes",PARAMOUNT FHD H265
+https://iptv-autocura-1.onrender.com/canal/272
+#EXTINF:-1 group-title="Religiosos",GOSPEL MOVIES TELEVISION
+https://iptv-autocura-1.onrender.com/canal/522
+
+#EXTINF:-1 group-title="Esportes",PREMIERE CLUBES  H265
+https://iptv-autocura-1.onrender.com/canal/273
+#EXTINF:-1 group-title="Esportes",PREMIERE CLUBES H265*
+https://iptv-autocura-1.onrender.com/canal/88561
+#EXTINF:-1 group-title="Esportes",PREMIERE CLUBES HD
+https://iptv-autocura-1.onrender.com/canal/67
+#EXTINF:-1 group-title="Esportes",PREMIERE CLUBES HD*
+https://iptv-autocura-1.onrender.com/canal/88560
+#EXTINF:-1 group-title="Esportes",PREMIERE CLUBES SD
+https://iptv-autocura-1.onrender.com/canal/531
+#EXTINF:-1 group-title="Esportes",PREMIERE CLUBES SD*
+https://iptv-autocura-1.onrender.com/canal/88562
+#EXTINF:-1 group-title="Esportes",PREMIERE 2 FHD H265
+https://iptv-autocura-1.onrender.com/canal/274
+#EXTINF:-1 group-title="Esportes",PREMIERE 2 H265*
+https://iptv-autocura-1.onrender.com/canal/88564
+
+#EXTINF:-1 group-title="Esportes",PREMIERE 2 HD
+https://iptv-autocura-1.onrender.com/canal/61
+#EXTINF:-1 group-title="Esportes",PREMIERE 2 HD*
+https://iptv-autocura-1.onrender.com/canal/88565
+#EXTINF:-1 group-title="Esportes",PREMIERE 2 SD
+https://iptv-autocura-1.onrender.com/canal/523
+#EXTINF:-1 group-title="Esportes",PREMIERE 2 SD*
+https://iptv-autocura-1.onrender.com/canal/88566
+#EXTINF:-1 group-title="Esportes",PREMIERE 3 FHD H265
+https://iptv-autocura-1.onrender.com/canal/275
+#EXTINF:-1 group-title="Esportes",PREMIERE 3 HD
+https://iptv-autocura-1.onrender.com/canal/62
+#EXTINF:-1 group-title="Esportes",PREMIERE 3 SD
+https://iptv-autocura-1.onrender.com/canal/524
+#EXTINF:-1 group-title="Esportes",PREMIERE 4 FHD H265
+https://iptv-autocura-1.onrender.com/canal/276
+#EXTINF:-1 group-title="Esportes",PREMIERE 4 HD
+https://iptv-autocura-1.onrender.com/canal/63
+#EXTINF:-1 group-title="Esportes",PREMIERE 4 SD
+https://iptv-autocura-1.onrender.com/canal/525
+#EXTINF:-1 group-title="Esportes",PREMIERE 5 FHD H265
+https://iptv-autocura-1.onrender.com/canal/277
+#EXTINF:-1 group-title="Esportes",PREMIERE 5 HD
+https://iptv-autocura-1.onrender.com/canal/64
+#EXTINF:-1 group-title="Esportes",PREMIERE 5 SD
+https://iptv-autocura-1.onrender.com/canal/526
+#EXTINF:-1 group-title="Esportes",PREMIERE 6 FHD H265
+https://iptv-autocura-1.onrender.com/canal/278
+#EXTINF:-1 group-title="Esportes",PREMIERE 6 HD
+https://iptv-autocura-1.onrender.com/canal/65
+#EXTINF:-1 group-title="Esportes",PREMIERE 6 SD
+https://iptv-autocura-1.onrender.com/canal/527
+#EXTINF:-1 group-title="Esportes",PREMIERE 7 FHD H265
+https://iptv-autocura-1.onrender.com/canal/279
+#EXTINF:-1 group-title="Esportes",PREMIERE 7 HD
+https://iptv-autocura-1.onrender.com/canal/66
+#EXTINF:-1 group-title="Esportes",PREMIERE 7 SD
+https://iptv-autocura-1.onrender.com/canal/528
+
+#EXTINF:-1 group-title="Noticias",RECORD NEWS HD
+https://iptv-autocura-1.onrender.com/canal/104
+#EXTINF:-1 group-title="Noticias",RECORD NEWS SD
+https://iptv-autocura-1.onrender.com/canal/533
+#EXTINF:-1 group-title="Canais de TV",RECORD TV RJ HD
+https://iptv-autocura-1.onrender.com/canal/345
+#EXTINF:-1 group-title="Canais de TV",RECORD TV RJ SD
+https://iptv-autocura-1.onrender.com/canal/76666
+
+#EXTINF:-1 group-title="Canais de TV",REDE BRASIL SD
+https://iptv-autocura-1.onrender.com/canal/536
+#EXTINF:-1 group-title="Religiosos",TV REDE GOSPEL HD
+https://iptv-autocura-1.onrender.com/canal/152
+#EXTINF:-1 group-title="Religiosos",REDE SUPER
+https://iptv-autocura-1.onrender.com/canal/596
+#EXTINF:-1 group-title="Canais de TV",REDE TV HD
+https://iptv-autocura-1.onrender.com/canal/69
+#EXTINF:-1 group-title="Religiosos",REDE VIDA
+https://iptv-autocura-1.onrender.com/canal/538
+#EXTINF:-1 group-title="Religiosos",RIT TV HD
+https://iptv-autocura-1.onrender.com/canal/162
+
+#EXTINF:-1 group-title="Canais de TV",SBT RJ HD
+https://iptv-autocura-1.onrender.com/canal/367
+#EXTINF:-1 group-title="Canais de TV",SBT RJ SD
+https://iptv-autocura-1.onrender.com/canal/76680
+#EXTINF:-1 group-title="Canais de TV",SBT SP HD
+https://iptv-autocura-1.onrender.com/canal/429
+#EXTINF:-1 group-title="Canais de TV",SBT SP SD
+https://iptv-autocura-1.onrender.com/canal/540
+
+#EXTINF:-1 group-title="Filmes",SPACE FHD H265
+https://iptv-autocura-1.onrender.com/canal/282
+#EXTINF:-1 group-title="Filmes",SPACE HD
+https://iptv-autocura-1.onrender.com/canal/70
+#EXTINF:-1 group-title="Filmes",SPACE SD
+https://iptv-autocura-1.onrender.com/canal/543
+
+#EXTINF:-1 group-title="Esportes",SPORTV H265
+https://iptv-autocura-1.onrender.com/canal/285
+#EXTINF:-1 group-title="Esportes",SPORTV H265*
+https://iptv-autocura-1.onrender.com/canal/88558
+#EXTINF:-1 group-title="Esportes",SPORTV HD
+https://iptv-autocura-1.onrender.com/canal/73
+#EXTINF:-1 group-title="Esportes",SPORTV HD*
+https://iptv-autocura-1.onrender.com/canal/87150
+#EXTINF:-1 group-title="Esportes",SPORTV SD
+https://iptv-autocura-1.onrender.com/canal/544
+#EXTINF:-1 group-title="Esportes",SPORTV SD*
+https://iptv-autocura-1.onrender.com/canal/88557
+#EXTINF:-1 group-title="Esportes",SPORTV 2 H265
+https://iptv-autocura-1.onrender.com/canal/283
+#EXTINF:-1 group-title="Esportes",SPORTV 2 HD
+https://iptv-autocura-1.onrender.com/canal/71
+#EXTINF:-1 group-title="Esportes",SPORTV 2 SD
+https://iptv-autocura-1.onrender.com/canal/545
+#EXTINF:-1 group-title="Esportes",SPORTV 3 H265
+https://iptv-autocura-1.onrender.com/canal/284
+#EXTINF:-1 group-title="Esportes",SPORTV 3 HD
+https://iptv-autocura-1.onrender.com/canal/72
+#EXTINF:-1 group-title="Esportes",SPORTV 3 SD
+https://iptv-autocura-1.onrender.com/canal/546
+
+#EXTINF:-1 group-title="Canais de TV",STUDIO UNIVERSAL FHD H265
+https://iptv-autocura-1.onrender.com/canal/286
+#EXTINF:-1 group-title="Canais de TV",STUDIO UNIVERSAL HD
+https://iptv-autocura-1.onrender.com/canal/74
+#EXTINF:-1 group-title="Canais de TV",STUDIO UNIVERSAL SD
+https://iptv-autocura-1.onrender.com/canal/547
+
+#EXTINF:-1 group-title="Religiosos",SUPER GOSPEL
+https://iptv-autocura-1.onrender.com/canal/35627
+
+#EXTINF:-1 group-title="Canais de TV",SYFY FHD H265
+https://iptv-autocura-1.onrender.com/canal/287
+#EXTINF:-1 group-title="Canais de TV",SYFY HD
+https://iptv-autocura-1.onrender.com/canal/75
+#EXTINF:-1 group-title="Canais de TV",SYFY SD
+https://iptv-autocura-1.onrender.com/canal/548
+
+#EXTINF:-1 group-title="Filmes",TNT NOVELAS FHD H265
+https://iptv-autocura-1.onrender.com/canal/288
+#EXTINF:-1 group-title="Filmes",TNT NOVELAS HD
+https://iptv-autocura-1.onrender.com/canal/76
+#EXTINF:-1 group-title="Filmes",TNT NOVELAS SD
+https://iptv-autocura-1.onrender.com/canal/549
+
+#EXTINF:-1 group-title="Filmes",TCM HD
+https://iptv-autocura-1.onrender.com/canal/131
+#EXTINF:-1 group-title="Filmes",TCM SD
+https://iptv-autocura-1.onrender.com/canal/550
+
+#EXTINF:-1 group-title="Filmes",TELECINE ACTION H265
+https://iptv-autocura-1.onrender.com/canal/289
+#EXTINF:-1 group-title="Filmes",TELECINE ACTION HD
+https://iptv-autocura-1.onrender.com/canal/77
+#EXTINF:-1 group-title="Filmes",TELECINE ACTION SD
+https://iptv-autocura-1.onrender.com/canal/551
+#EXTINF:-1 group-title="Filmes",TELECINE CULT H265
+https://iptv-autocura-1.onrender.com/canal/290
+#EXTINF:-1 group-title="Filmes",TELECINE CULT HD
+https://iptv-autocura-1.onrender.com/canal/78
+#EXTINF:-1 group-title="Filmes",TELECINE CULT SD
+https://iptv-autocura-1.onrender.com/canal/552
+#EXTINF:-1 group-title="Filmes",TELECINE FUN H265 
+https://iptv-autocura-1.onrender.com/canal/291
+#EXTINF:-1 group-title="Filmes",TELECINE FUN HD
+https://iptv-autocura-1.onrender.com/canal/79
+#EXTINF:-1 group-title="Filmes",TELECINE FUN SD
+https://iptv-autocura-1.onrender.com/canal/553
+#EXTINF:-1 group-title="Filmes",TELECINE PIPOCA H265
+https://iptv-autocura-1.onrender.com/canal/292
+#EXTINF:-1 group-title="Filmes",TELECINE PIPOCA HD
+https://iptv-autocura-1.onrender.com/canal/80
+#EXTINF:-1 group-title="Filmes",TELECINE PIPOCA SD
+https://iptv-autocura-1.onrender.com/canal/554
+#EXTINF:-1 group-title="Filmes",TELECINE PREMIUM H265
+https://iptv-autocura-1.onrender.com/canal/293
+#EXTINF:-1 group-title="Filmes",TELECINE PREMIUM HD
+https://iptv-autocura-1.onrender.com/canal/81
+#EXTINF:-1 group-title="Filmes",TELECINE PREMIUM SD
+https://iptv-autocura-1.onrender.com/canal/555
+#EXTINF:-1 group-title="Filmes",TELECINE TOUCH H265
+https://iptv-autocura-1.onrender.com/canal/294
+#EXTINF:-1 group-title="Filmes",TELECINE TOUCH HD
+https://iptv-autocura-1.onrender.com/canal/82
+#EXTINF:-1 group-title="Filmes",TELECINE TOUCH SD
+https://iptv-autocura-1.onrender.com/canal/556
+
+
+#EXTINF:-1 group-title="Documentarios",TLC HD
+https://iptv-autocura-1.onrender.com/canal/83
+#EXTINF:-1 group-title="Documentarios",TLC SD
+https://iptv-autocura-1.onrender.com/canal/558
+
+
+#EXTINF:-1 group-title="Filmes",TNT FHD H265
+https://iptv-autocura-1.onrender.com/canal/296
+#EXTINF:-1 group-title="Filmes",TNT HD
+https://iptv-autocura-1.onrender.com/canal/84
+#EXTINF:-1 group-title="Filmes",TNT SD
+https://iptv-autocura-1.onrender.com/canal/559
+#EXTINF:-1 group-title="Filmes",TNT SERIES FHD H265
+https://iptv-autocura-1.onrender.com/canal/297
+#EXTINF:-1 group-title="Filmes",TNT SERIES HD
+https://iptv-autocura-1.onrender.com/canal/85
+#EXTINF:-1 group-title="Filmes",TNT SERIES SD
+https://iptv-autocura-1.onrender.com/canal/560
+
+#EXTINF:-1 group-title="Infantil",TOONCAST HD
+https://iptv-autocura-1.onrender.com/canal/124
+#EXTINF:-1 group-title="Infantil",TOONCAST SD
+https://iptv-autocura-1.onrender.com/canal/561
+
+#EXTINF:-1 group-title="Variedades",TRAVEL BOX BRASIL HD
+https://iptv-autocura-1.onrender.com/canal/136
+#EXTINF:-1 group-title="Variedades",TRUT TV HD
+https://iptv-autocura-1.onrender.com/canal/132
+#EXTINF:-1 group-title="Variedades",TRUT TV SD
+https://iptv-autocura-1.onrender.com/canal/562
+
+#EXTINF:-1 group-title="Canais de TV",TV APARECIDA
+https://iptv-autocura-1.onrender.com/canal/564
+#EXTINF:-1 group-title="Canais de TV",TV BRASIL
+https://iptv-autocura-1.onrender.com/canal/121
+#EXTINF:-1 group-title="Canais de TV",TV CULTURA
+https://iptv-autocura-1.onrender.com/canal/568
+#EXTINF:-1 group-title="Canais de TV",TV CÂMARA
+https://iptv-autocura-1.onrender.com/canal/566
+#EXTINF:-1 group-title="Canais de TV",TV ESCOLA
+https://iptv-autocura-1.onrender.com/canal/589
+#EXTINF:-1 group-title="Religiosos",TV EVANGELIZAR HD
+https://iptv-autocura-1.onrender.com/canal/31750
+#EXTINF:-1 group-title="Variedades",WEB TV EXTREME
+https://iptv-autocura-1.onrender.com/canal/60182
+#EXTINF:-1 group-title="Infantil",TV GLOOBINHO HD
+https://iptv-autocura-1.onrender.com/canal/123
+#EXTINF:-1 group-title="Infantil",TV GLOOBINHO SD
+https://iptv-autocura-1.onrender.com/canal/3905
+#EXTINF:-1 group-title="Canais de TV",TV JUSTIÇA
+https://iptv-autocura-1.onrender.com/canal/569
+#EXTINF:-1 group-title="Esportes",TV NSPORTS HD (JOGO 1)
+https://iptv-autocura-1.onrender.com/canal/163
+#EXTINF:-1 group-title="Esportes",TV NSPORTS HD (JOGO 2)
+https://iptv-autocura-1.onrender.com/canal/164
+#EXTINF:-1 group-title="Esportes",TV NSPORTS HD (JOGO 3)
+https://iptv-autocura-1.onrender.com/canal/165
+#EXTINF:-1 group-title="Infantil",TV RA-TIM-BUM HD
+https://iptv-autocura-1.onrender.com/canal/88
+#EXTINF:-1 group-title="Infantil",TV RA-TIM-BUM SD
+https://iptv-autocura-1.onrender.com/canal/571
+#EXTINF:-1 group-title="Canais de TV",TV SENADO
+https://iptv-autocura-1.onrender.com/canal/572
+#EXTINF:-1 group-title="Canais de TV",TV SERIES SD
+https://iptv-autocura-1.onrender.com/canal/60180
+#EXTINF:-1 group-title="Religiosos",TV UNIVERSAL HD
+https://iptv-autocura-1.onrender.com/canal/31748
+#EXTINF:-1 group-title="Variedades",TVR VARIEDADES
+https://iptv-autocura-1.onrender.com/canal/71138
+#EXTINF:-1 group-title="Canais de TV",UNIVERSAL CHANNEL FHD H265
+https://iptv-autocura-1.onrender.com/canal/301
+#EXTINF:-1 group-title="Canais de TV",UNIVERSAL CHANNEL HD
+https://iptv-autocura-1.onrender.com/canal/90
+#EXTINF:-1 group-title="Canais de TV",UNIVERSAL CHANNEL SD
+https://iptv-autocura-1.onrender.com/canal/585
+#EXTINF:-1 group-title="Musica",VH1 HD
+https://iptv-autocura-1.onrender.com/canal/91
+#EXTINF:-1 group-title="Musica",VH1 SD
+https://iptv-autocura-1.onrender.com/canal/2958
+#EXTINF:-1 group-title="Canais de TV",GLOBOPLAY NOVELAS HD
+https://iptv-autocura-1.onrender.com/canal/92
+#EXTINF:-1 group-title="Canais de TV",GLOBOPLAY NOVELAS SD
+https://iptv-autocura-1.onrender.com/canal/580
+#EXTINF:-1 group-title="Filmes",WARNER CHANNEL FHD H265
+https://iptv-autocura-1.onrender.com/canal/303
+#EXTINF:-1 group-title="Filmes",WARNER CHANNEL HD
+https://iptv-autocura-1.onrender.com/canal/93
+#EXTINF:-1 group-title="Filmes",WARNER CHANNEL SD
+https://iptv-autocura-1.onrender.com/canal/581
+#EXTINF:-1 group-title="Variedades",WOOHOO TV HD
+https://iptv-autocura-1.onrender.com/canal/129
+#EXTINF:-1 group-title="Variedades",WOOHOO TV SD
+https://iptv-autocura-1.onrender.com/canal/582
+#EXTINF:-1 group-title="Infantil",ZOOMOO HD
+https://iptv-autocura-1.onrender.com/canal/833
+#EXTINF:-1 group-title="Infantil",ZOOMOO SD
+https://iptv-autocura-1.onrender.com/canal/583
+
+#EXTINF:-1 group-title="Canais de TV",GLOBO TV ANHANGUERA GO HD
+https://iptv-autocura-1.onrender.com/canal/86
+#EXTINF:-1 group-title="Religiosos",TV GIDEOES
+https://iptv-autocura-1.onrender.com/canal/80159
+#EXTINF:-1 group-title="Canais de TV",SBT TV ARATU BAHIA SD
+https://iptv-autocura-1.onrender.com/canal/80160
+#EXTINF:-1 group-title="Variedades",BONS TEMPOS TV
+https://iptv-autocura-1.onrender.com/canal/80161
+
+#EXTINF:-1 group-title="4K",BAND 4K
+https://iptv-autocura-1.onrender.com/canal/80551
+#EXTINF:-1 group-title="4K",RECORD 4K
+https://iptv-autocura-1.onrender.com/canal/80552
+#EXTINF:-1 group-title="4K",PREMIERE CLUBES 4K
+https://iptv-autocura-1.onrender.com/canal/80553
+#EXTINF:-1 group-title="4K",TELECINE PREMIUM 4K
+https://iptv-autocura-1.onrender.com/canal/80554
+#EXTINF:-1 group-title="4K",TNT 4K
+https://iptv-autocura-1.onrender.com/canal/80555
+#EXTINF:-1 group-title="4K",TNT SERIES 4K
+https://iptv-autocura-1.onrender.com/canal/80556
+#EXTINF:-1 group-title="4K",ANIMAL PLANET 4K
+https://iptv-autocura-1.onrender.com/canal/80557
+#EXTINF:-1 group-title="4K",CARTOON NETWORK 4K
+https://iptv-autocura-1.onrender.com/canal/80558
+#EXTINF:-1 group-title="4K",COMBATE 4K
+https://iptv-autocura-1.onrender.com/canal/80559
+#EXTINF:-1 group-title="4K",DISCOVERY CHANNEL 4K
+https://iptv-autocura-1.onrender.com/canal/80560
+#EXTINF:-1 group-title="4K",GLOBO 4K
+https://iptv-autocura-1.onrender.com/canal/80563
+#EXTINF:-1 group-title="4K",HBO 4K
+https://iptv-autocura-1.onrender.com/canal/80564
+
+#EXTINF:-1 group-title="4K",MEGAPIX 4K
+https://iptv-autocura-1.onrender.com/canal/80565
+#EXTINF:-1 group-title="4K",MULTISHOW 4K
+https://iptv-autocura-1.onrender.com/canal/80566
+#EXTINF:-1 group-title="4K",SBT 4K
+https://iptv-autocura-1.onrender.com/canal/80567
+#EXTINF:-1 group-title="4K",SPACE 4K
+https://iptv-autocura-1.onrender.com/canal/80568
+#EXTINF:-1 group-title="4K",SPORTV 4K
+https://iptv-autocura-1.onrender.com/canal/80569
+#EXTINF:-1 group-title="4K",HBO XTREME 4K
+https://iptv-autocura-1.onrender.com/canal/80570
+#EXTINF:-1 group-title="4K",TELECINE PIPOCA 4K
+https://iptv-autocura-1.onrender.com/canal/80575
+#EXTINF:-1 group-title="4K",JOVEM PAN NEWS 4K
+https://iptv-autocura-1.onrender.com/canal/81009
+
+#EXTINF:-1 group-title="Religiosos",REDE SECULO 21 SD
+https://iptv-autocura-1.onrender.com/canal/82126
+#EXTINF:-1 group-title="Religiosos",TV PAI ETERNO HD
+https://iptv-autocura-1.onrender.com/canal/82127
+#EXTINF:-1 group-title="Religiosos",TV PAI ETERNO SD
+https://iptv-autocura-1.onrender.com/canal/82128
+
+#EXTINF:-1 group-title="Variedades",GLN TV
+https://iptv-autocura-1.onrender.com/canal/82855
+#EXTINF:-1 group-title="Canais de TV",TV DIARIO NORDESTE
+https://iptv-autocura-1.onrender.com/canal/82856
+
+#EXTINF:-1 group-title="Variedades",MODO VIAGEM H265
+https://iptv-autocura-1.onrender.com/canal/86000
+#EXTINF:-1 group-title="Variedades",MODO VIAGEM HD
+https://iptv-autocura-1.onrender.com/canal/86001
+#EXTINF:-1 group-title="Variedades",MODO VIAGEM SD
+https://iptv-autocura-1.onrender.com/canal/86002
+
+#EXTINF:-1 group-title="Canais de TV",GLOBO TV ANHANGUERA GO SD
+https://iptv-autocura-1.onrender.com/canal/86090
+#EXTINF:-1 group-title="Canais de TV",GLOBO NSC CRICIUMA HD
+https://iptv-autocura-1.onrender.com/canal/86414
+#EXTINF:-1 group-title="Canais de TV",GLOBO TV RIO SUL HD
+https://iptv-autocura-1.onrender.com/canal/86682
+#EXTINF:-1 group-title="Canais de TV",GLOBO TV RIO SUL SD
+https://iptv-autocura-1.onrender.com/canal/86683
+#EXTINF:-1 group-title="Variedades",REDE ALFA
+https://iptv-autocura-1.onrender.com/canal/87726
+
+#EXTINF:-1 group-title="Filmes",CINE FAROESTE
+https://iptv-autocura-1.onrender.com/canal/88962
+#EXTINF:-1 group-title="Filmes",CINE DISNEY
+https://iptv-autocura-1.onrender.com/canal/88963
+#EXTINF:-1 group-title="Filmes",CINE STAR WARS
+https://iptv-autocura-1.onrender.com/canal/88965
+#EXTINF:-1 group-title="Filmes",CINE FICÇÃO
+https://iptv-autocura-1.onrender.com/canal/88966
+#EXTINF:-1 group-title="Filmes",CINE MARVEL
+https://iptv-autocura-1.onrender.com/canal/88967
+
+#EXTINF:-1 group-title="Filmes",SONY MOVIES SD
+https://iptv-autocura-1.onrender.com/canal/93697
+#EXTINF:-1 group-title="Filmes",SONY MOVIES HD
+https://iptv-autocura-1.onrender.com/canal/93696
+#EXTINF:-1 group-title="Canais de TV",GLOBO RPC PARANAVAI SD
+https://iptv-autocura-1.onrender.com/canal/94568
+#EXTINF:-1 group-title="Agro",AGRO+ HD
+https://iptv-autocura-1.onrender.com/canal/428744
+#EXTINF:-1 group-title="Musica",TRACE BRASIL HD
+https://iptv-autocura-1.onrender.com/canal/428888
+
+#EXTINF:-1 group-title="SBT+",SBT+ NOVELAS
+https://iptv-autocura-1.onrender.com/canal/453188
+#EXTINF:-1 group-title="SBT+",SBT+ TVZYN
+https://iptv-autocura-1.onrender.com/canal/453193
+
+#EXTINF:-1 group-title="Esportes",UFC FIGHT PASS 01
+https://iptv-autocura-1.onrender.com/canal/86157
+#EXTINF:-1 group-title="Esportes",UFC FIGHT PASS 02
+https://iptv-autocura-1.onrender.com/canal/84480
+#EXTINF:-1 group-title="Esportes",UFC FIGHT PASS 03
+https://iptv-autocura-1.onrender.com/canal/84481
+#EXTINF:-1 group-title="4K",BR SPORT 4K
+https://iptv-autocura-1.onrender.com/canal/454346
+#EXTINF:-1 group-title="Esportes",PREMIERE 8 HD
+https://iptv-autocura-1.onrender.com/canal/466059
+#EXTINF:-1 group-title="Esportes",PREMIERE 8 SD
+https://iptv-autocura-1.onrender.com/canal/466060
+#EXTINF:-1 group-title="4K",BR SPORT 4 4K
+https://iptv-autocura-1.onrender.com/canal/497305
+#EXTINF:-1 group-title="Canais de TV",RECORD TV CIDADE CE HD
+https://iptv-autocura-1.onrender.com/canal/499567
+#EXTINF:-1 group-title="Canais de TV",RECORD TV CONQUISTA MT
+https://iptv-autocura-1.onrender.com/canal/499568
+#EXTINF:-1 group-title="Esportes",X SPORTS
+https://iptv-autocura-1.onrender.com/canal/538625
+
+#EXTINF:-1 group-title="Esportes",SPORTYNET 01
+https://iptv-autocura-1.onrender.com/canal/546884
+#EXTINF:-1 group-title="Esportes",SPORTYNET 02
+https://iptv-autocura-1.onrender.com/canal/546885
+#EXTINF:-1 group-title="Esportes",SPORTYNET 03
+https://iptv-autocura-1.onrender.com/canal/546886
+#EXTINF:-1 group-title="Esportes",SPORTYNET 04
+https://iptv-autocura-1.onrender.com/canal/546887
