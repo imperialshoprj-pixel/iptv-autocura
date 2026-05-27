@@ -1,0 +1,605 @@
+#EXTM3U
+
+#EXTINF:-1 group-title="Globo",GLOBO SP SD
+http://10.165.132.109:5000/canal/492
+#EXTINF:-1 group-title="Globo",GLOBO RJ HD
+http://10.165.132.109:5000/canal/335
+#EXTINF:-1 group-title="Globo",GLOBO RJ SD
+http://10.165.132.109:5000/canal/491
+#EXTINF:-1 group-title="Globo",GLOBO NEWS HD
+http://10.165.132.109:5000/canal/35
+
+#EXTINF:-1 group-title="Canais de TV",A&E HD
+http://10.165.132.109:5000/canal/1
+#EXTINF:-1 group-title="Canais de TV",AMC HD
+http://10.165.132.109:5000/canal/2
+#EXTINF:-1 group-title="Canais de TV",ANIMAL PLANET HD
+http://10.165.132.109:5000/canal/3
+#EXTINF:-1 group-title="Canais de TV",ARTE 1 HD
+http://10.165.132.109:5000/canal/130
+#EXTINF:-1 group-title="Canais de TV",AXN HD
+http://10.165.132.109:5000/canal/4
+#EXTINF:-1 group-title="Canais de TV",BAND NEWS HD
+http://10.165.132.109:5000/canal/103
+#EXTINF:-1 group-title="Esportes",BAND SPORTS HD
+http://10.165.132.109:5000/canal/5
+#EXTINF:-1 group-title="Canais de TV",BIS HD
+http://10.165.132.109:5000/canal/6
+#EXTINF:-1 group-title="Canais de TV",CANAL BRASIL HD
+http://10.165.132.109:5000/canal/135
+#EXTINF:-1 group-title="Canais de TV",CANAL SONY HD
+http://10.165.132.109:5000/canal/7
+#EXTINF:-1 group-title="Infantil",CARTOON NETWORK HD
+http://10.165.132.109:5000/canal/8
+#EXTINF:-1 group-title="Canais de TV",CINEMAX HD
+http://10.165.132.109:5000/canal/9
+#EXTINF:-1 group-title="Canais de TV",CNN BRASIL HD
+http://10.165.132.109:5000/canal/102
+#EXTINF:-1 group-title="Esportes",COMBATE HD
+http://10.165.132.109:5000/canal/10
+#EXTINF:-1 group-title="Documentarios",DISCOVERY CHANNEL HD
+http://10.165.132.109:5000/canal/12
+#EXTINF:-1 group-title="Documentarios",DISCOVERY H&H HD
+http://10.165.132.109:5000/canal/14
+#EXTINF:-1 group-title="Infantil",DISCOVERY KIDS HD
+http://10.165.132.109:5000/canal/15
+#EXTINF:-1 group-title="Documentarios",DISCOVERY SCIENCE HD
+http://10.165.132.109:5000/canal/16
+#EXTINF:-1 group-title="Documentarios",DISCOVERY THEATER HD
+http://10.165.132.109:5000/canal/17
+#EXTINF:-1 group-title="Documentarios",DISCOVERY TURBO HD
+http://10.165.132.109:5000/canal/18
+#EXTINF:-1 group-title="Documentarios",DISCOVERY WORLD HD
+http://10.165.132.109:5000/canal/19
+#EXTINF:-1 group-title="Canais de TV",E! HD
+http://10.165.132.109:5000/canal/22
+#EXTINF:-1 group-title="Infantil",GLOOB HD
+http://10.165.132.109:5000/canal/37
+#EXTINF:-1 group-title="Canais de TV",GNT HD
+http://10.165.132.109:5000/canal/38
+
+#EXTINF:-1 group-title="HBO",HBO 2 HD
+http://10.165.132.109:5000/canal/39
+#EXTINF:-1 group-title="HBO",HBO FAMILY HD
+http://10.165.132.109:5000/canal/40
+#EXTINF:-1 group-title="HBO",HBO HD
+http://10.165.132.109:5000/canal/41
+#EXTINF:-1 group-title="HBO",HBO PLUS HD
+http://10.165.132.109:5000/canal/42
+#EXTINF:-1 group-title="HBO",HBO PLUS SD
+http://10.165.132.109:5000/canal/497
+#EXTINF:-1 group-title="HBO",HBO POP HD
+http://10.165.132.109:5000/canal/262
+#EXTINF:-1 group-title="HBO",HBO POP SD
+http://10.165.132.109:5000/canal/50
+#EXTINF:-1 group-title="HBO",HBO SIGNATURE H265
+http://10.165.132.109:5000/canal/253
+#EXTINF:-1 group-title="HBO",HBO SIGNATURE HD
+http://10.165.132.109:5000/canal/43
+#EXTINF:-1 group-title="HBO",HBO SIGNATURE SD
+http://10.165.132.109:5000/canal/498
+#EXTINF:-1 group-title="HBO",HBO XTREME FHD H265
+http://10.165.132.109:5000/canal/261
+#EXTINF:-1 group-title="HBO",HBO XTREME HD
+http://10.165.132.109:5000/canal/49
+#EXTINF:-1 group-title="HBO",HBO XTREME SD
+http://10.165.132.109:5000/canal/76662
+
+#EXTINF:-1 group-title="Canais de TV",HGTV H265
+http://10.165.132.109:5000/canal/225
+#EXTINF:-1 group-title="Canais de TV",HGTV HD
+http://10.165.132.109:5000/canal/13
+#EXTINF:-1 group-title="Documentarios",HISTORY H265
+http://10.165.132.109:5000/canal/255
+#EXTINF:-1 group-title="Documentarios",HISTORY HD
+http://10.165.132.109:5000/canal/45
+#EXTINF:-1 group-title="Documentarios",HISTORY SD
+http://10.165.132.109:5000/canal/584
+#EXTINF:-1 group-title="Documentarios",HISTORY 2 H265
+http://10.165.132.109:5000/canal/256
+#EXTINF:-1 group-title="Documentarios",HISTORY 2 HD
+http://10.165.132.109:5000/canal/44
+#EXTINF:-1 group-title="Documentarios",HISTORY 2 SD
+http://10.165.132.109:5000/canal/500
+#EXTINF:-1 group-title="Variedades",HELLO TV
+http://10.165.132.109:5000/canal/63867
+#EXTINF:-1 group-title="Variedades",INSPIRE TV
+http://10.165.132.109:5000/canal/63866
+#EXTINF:-1 group-title="Documentarios",INVESTIGAÇAO DISCOVERY H265
+http://10.165.132.109:5000/canal/257
+#EXTINF:-1 group-title="Documentarios",INVESTIGAÇAO DISCOVERY HD
+http://10.165.132.109:5000/canal/46
+#EXTINF:-1 group-title="Documentarios",INVESTIGAÇAO DISCOVERY SD
+http://10.165.132.109:5000/canal/501
+#EXTINF:-1 group-title="Variedades",ISTV HD
+http://10.165.132.109:5000/canal/31746
+#EXTINF:-1 group-title="Noticias",JOVEM PAN SD
+http://10.165.132.109:5000/canal/76660
+#EXTINF:-1 group-title="Variedades",LBV - BOA VONTADE
+http://10.165.132.109:5000/canal/53957
+
+#EXTINF:-1 group-title="Canais de TV",LIFETIME H265
+http://10.165.132.109:5000/canal/258
+#EXTINF:-1 group-title="Canais de TV",LIFETIME HD
+http://10.165.132.109:5000/canal/47
+#EXTINF:-1 group-title="Canais de TV",LIFETIME SD
+http://10.165.132.109:5000/canal/503
+
+#EXTINF:-1 group-title="Filmes",MEGAPIX FHD H265
+http://10.165.132.109:5000/canal/263
+#EXTINF:-1 group-title="Filmes",MEGAPIX HD
+http://10.165.132.109:5000/canal/51
+#EXTINF:-1 group-title="Filmes",MEGAPIX SD
+http://10.165.132.109:5000/canal/507
+
+#EXTINF:-1 group-title="Canais de TV",MTV H265
+http://10.165.132.109:5000/canal/264
+#EXTINF:-1 group-title="Canais de TV",MTV HD
+http://10.165.132.109:5000/canal/52
+#EXTINF:-1 group-title="Canais de TV",MTV LIVE HD
+http://10.165.132.109:5000/canal/197
+#EXTINF:-1 group-title="Canais de TV",MTV SD
+http://10.165.132.109:5000/canal/508
+#EXTINF:-1 group-title="Canais de TV",MULTISHOW H265
+http://10.165.132.109:5000/canal/265
+#EXTINF:-1 group-title="Canais de TV",MULTISHOW HD
+http://10.165.132.109:5000/canal/53
+#EXTINF:-1 group-title="Canais de TV",MULTISHOW SD
+http://10.165.132.109:5000/canal/509
+#EXTINF:-1 group-title="Canais de TV",MUSIC BOX BRASIL HD
+http://10.165.132.109:5000/canal/511
+#EXTINF:-1 group-title="Canais de TV",MUSIC BOX BRASIL SD
+http://10.165.132.109:5000/canal/510
+
+#EXTINF:-1 group-title="Infantil",NICK JR H265
+http://10.165.132.109:5000/canal/270
+#EXTINF:-1 group-title="Infantil",NICK JR HD
+http://10.165.132.109:5000/canal/58
+#EXTINF:-1 group-title="Infantil",NICK JR SD
+http://10.165.132.109:5000/canal/516
+#EXTINF:-1 group-title="Infantil",NICKELODEON H265
+http://10.165.132.109:5000/canal/269
+#EXTINF:-1 group-title="Infantil",NICKELODEON HD
+http://10.165.132.109:5000/canal/57
+#EXTINF:-1 group-title="Infantil",NICKELODEON SD
+http://10.165.132.109:5000/canal/517
+
+#EXTINF:-1 group-title="Religiosos",NOVO TEMPO HD
+http://10.165.132.109:5000/canal/106
+#EXTINF:-1 group-title="Religiosos",NOVO TEMPO SD
+http://10.165.132.109:5000/canal/586
+
+#EXTINF:-1 group-title="Canais de TV",OFF H265
+http://10.165.132.109:5000/canal/271
+#EXTINF:-1 group-title="Canais de TV",OFF HD
+http://10.165.132.109:5000/canal/59
+#EXTINF:-1 group-title="Canais de TV",OFF SD
+http://10.165.132.109:5000/canal/518
+
+#EXTINF:-1 group-title="Filmes",PARAMOUNT FHD H265
+http://10.165.132.109:5000/canal/272
+#EXTINF:-1 group-title="Religiosos",GOSPEL MOVIES TELEVISION
+http://10.165.132.109:5000/canal/522
+
+#EXTINF:-1 group-title="Esportes",PREMIERE CLUBES  H265
+http://10.165.132.109:5000/canal/273
+#EXTINF:-1 group-title="Esportes",PREMIERE CLUBES H265*
+http://10.165.132.109:5000/canal/88561
+#EXTINF:-1 group-title="Esportes",PREMIERE CLUBES HD
+http://10.165.132.109:5000/canal/67
+#EXTINF:-1 group-title="Esportes",PREMIERE CLUBES HD*
+http://10.165.132.109:5000/canal/88560
+#EXTINF:-1 group-title="Esportes",PREMIERE CLUBES SD
+http://10.165.132.109:5000/canal/531
+#EXTINF:-1 group-title="Esportes",PREMIERE CLUBES SD*
+http://10.165.132.109:5000/canal/88562
+#EXTINF:-1 group-title="Esportes",PREMIERE 2 FHD H265
+http://10.165.132.109:5000/canal/274
+#EXTINF:-1 group-title="Esportes",PREMIERE 2 H265*
+http://10.165.132.109:5000/canal/88564
+#EXTINF:-1 group-title="Esportes",PREMIERE 2 HD
+http://10.165.132.109:5000/canal/61
+#EXTINF:-1 group-title="Esportes",PREMIERE 2 HD*
+http://10.165.132.109:5000/canal/88565
+#EXTINF:-1 group-title="Esportes",PREMIERE 2 SD
+http://10.165.132.109:5000/canal/523
+#EXTINF:-1 group-title="Esportes",PREMIERE 2 SD*
+http://10.165.132.109:5000/canal/88566
+#EXTINF:-1 group-title="Esportes",PREMIERE 3 FHD H265
+http://10.165.132.109:5000/canal/275
+#EXTINF:-1 group-title="Esportes",PREMIERE 3 HD
+http://10.165.132.109:5000/canal/62
+#EXTINF:-1 group-title="Esportes",PREMIERE 3 SD
+http://10.165.132.109:5000/canal/524
+#EXTINF:-1 group-title="Esportes",PREMIERE 4 FHD H265
+http://10.165.132.109:5000/canal/276
+#EXTINF:-1 group-title="Esportes",PREMIERE 4 HD
+http://10.165.132.109:5000/canal/63
+#EXTINF:-1 group-title="Esportes",PREMIERE 4 SD
+http://10.165.132.109:5000/canal/525
+#EXTINF:-1 group-title="Esportes",PREMIERE 5 FHD H265
+http://10.165.132.109:5000/canal/277
+#EXTINF:-1 group-title="Esportes",PREMIERE 5 HD
+http://10.165.132.109:5000/canal/64
+#EXTINF:-1 group-title="Esportes",PREMIERE 5 SD
+http://10.165.132.109:5000/canal/526
+#EXTINF:-1 group-title="Esportes",PREMIERE 6 FHD H265
+http://10.165.132.109:5000/canal/278
+#EXTINF:-1 group-title="Esportes",PREMIERE 6 HD
+http://10.165.132.109:5000/canal/65
+#EXTINF:-1 group-title="Esportes",PREMIERE 6 SD
+http://10.165.132.109:5000/canal/527
+#EXTINF:-1 group-title="Esportes",PREMIERE 7 FHD H265
+http://10.165.132.109:5000/canal/279
+#EXTINF:-1 group-title="Esportes",PREMIERE 7 HD
+http://10.165.132.109:5000/canal/66
+#EXTINF:-1 group-title="Esportes",PREMIERE 7 SD
+http://10.165.132.109:5000/canal/528
+
+#EXTINF:-1 group-title="Noticias",RECORD NEWS HD
+http://10.165.132.109:5000/canal/104
+#EXTINF:-1 group-title="Noticias",RECORD NEWS SD
+http://10.165.132.109:5000/canal/533
+#EXTINF:-1 group-title="Canais de TV",RECORD TV RJ HD
+http://10.165.132.109:5000/canal/345
+#EXTINF:-1 group-title="Canais de TV",RECORD TV RJ SD
+http://10.165.132.109:5000/canal/76666
+
+#EXTINF:-1 group-title="Canais de TV",REDE BRASIL SD
+http://10.165.132.109:5000/canal/536
+#EXTINF:-1 group-title="Religiosos",TV REDE GOSPEL HD
+http://10.165.132.109:5000/canal/152
+#EXTINF:-1 group-title="Religiosos",REDE SUPER
+http://10.165.132.109:5000/canal/596
+#EXTINF:-1 group-title="Canais de TV",REDE TV HD
+http://10.165.132.109:5000/canal/69
+#EXTINF:-1 group-title="Religiosos",REDE VIDA
+http://10.165.132.109:5000/canal/538
+#EXTINF:-1 group-title="Religiosos",RIT TV HD
+http://10.165.132.109:5000/canal/162
+
+#EXTINF:-1 group-title="Canais de TV",SBT RJ HD
+http://10.165.132.109:5000/canal/367
+#EXTINF:-1 group-title="Canais de TV",SBT RJ SD
+http://10.165.132.109:5000/canal/76680
+#EXTINF:-1 group-title="Canais de TV",SBT SP HD
+http://10.165.132.109:5000/canal/429
+#EXTINF:-1 group-title="Canais de TV",SBT SP SD
+http://10.165.132.109:5000/canal/540
+
+#EXTINF:-1 group-title="Filmes",SPACE FHD H265
+http://10.165.132.109:5000/canal/282
+#EXTINF:-1 group-title="Filmes",SPACE HD
+http://10.165.132.109:5000/canal/70
+#EXTINF:-1 group-title="Filmes",SPACE SD
+http://10.165.132.109:5000/canal/543
+
+#EXTINF:-1 group-title="Esportes",SPORTV H265
+http://10.165.132.109:5000/canal/285
+#EXTINF:-1 group-title="Esportes",SPORTV H265*
+http://10.165.132.109:5000/canal/88558
+#EXTINF:-1 group-title="Esportes",SPORTV HD
+http://10.165.132.109:5000/canal/73
+#EXTINF:-1 group-title="Esportes",SPORTV HD*
+http://10.165.132.109:5000/canal/87150
+#EXTINF:-1 group-title="Esportes",SPORTV SD
+http://10.165.132.109:5000/canal/544
+#EXTINF:-1 group-title="Esportes",SPORTV SD*
+http://10.165.132.109:5000/canal/88557
+#EXTINF:-1 group-title="Esportes",SPORTV 2 H265
+http://10.165.132.109:5000/canal/283
+#EXTINF:-1 group-title="Esportes",SPORTV 2 HD
+http://10.165.132.109:5000/canal/71
+#EXTINF:-1 group-title="Esportes",SPORTV 2 SD
+http://10.165.132.109:5000/canal/545
+#EXTINF:-1 group-title="Esportes",SPORTV 3 H265
+http://10.165.132.109:5000/canal/284
+#EXTINF:-1 group-title="Esportes",SPORTV 3 HD
+http://10.165.132.109:5000/canal/72
+#EXTINF:-1 group-title="Esportes",SPORTV 3 SD
+http://10.165.132.109:5000/canal/546
+
+#EXTINF:-1 group-title="Canais de TV",STUDIO UNIVERSAL FHD H265
+http://10.165.132.109:5000/canal/286
+#EXTINF:-1 group-title="Canais de TV",STUDIO UNIVERSAL HD
+http://10.165.132.109:5000/canal/74
+#EXTINF:-1 group-title="Canais de TV",STUDIO UNIVERSAL SD
+http://10.165.132.109:5000/canal/547
+
+#EXTINF:-1 group-title="Religiosos",SUPER GOSPEL
+http://10.165.132.109:5000/canal/35627
+
+#EXTINF:-1 group-title="Canais de TV",SYFY FHD H265
+http://10.165.132.109:5000/canal/287
+#EXTINF:-1 group-title="Canais de TV",SYFY HD
+http://10.165.132.109:5000/canal/75
+#EXTINF:-1 group-title="Canais de TV",SYFY SD
+http://10.165.132.109:5000/canal/548
+
+#EXTINF:-1 group-title="Filmes",TNT NOVELAS FHD H265
+http://10.165.132.109:5000/canal/288
+#EXTINF:-1 group-title="Filmes",TNT NOVELAS HD
+http://10.165.132.109:5000/canal/76
+#EXTINF:-1 group-title="Filmes",TNT NOVELAS SD
+http://10.165.132.109:5000/canal/549
+
+#EXTINF:-1 group-title="Filmes",TCM HD
+http://10.165.132.109:5000/canal/131
+#EXTINF:-1 group-title="Filmes",TCM SD
+http://10.165.132.109:5000/canal/550
+
+#EXTINF:-1 group-title="Filmes",TELECINE ACTION H265
+http://10.165.132.109:5000/canal/289
+#EXTINF:-1 group-title="Filmes",TELECINE ACTION HD
+http://10.165.132.109:5000/canal/77
+#EXTINF:-1 group-title="Filmes",TELECINE ACTION SD
+http://10.165.132.109:5000/canal/551
+#EXTINF:-1 group-title="Filmes",TELECINE CULT H265
+http://10.165.132.109:5000/canal/290
+#EXTINF:-1 group-title="Filmes",TELECINE CULT HD
+http://10.165.132.109:5000/canal/78
+#EXTINF:-1 group-title="Filmes",TELECINE CULT SD
+http://10.165.132.109:5000/canal/552
+#EXTINF:-1 group-title="Filmes",TELECINE FUN H265 
+http://10.165.132.109:5000/canal/291
+#EXTINF:-1 group-title="Filmes",TELECINE FUN HD
+http://10.165.132.109:5000/canal/79
+#EXTINF:-1 group-title="Filmes",TELECINE FUN SD
+http://10.165.132.109:5000/canal/553
+#EXTINF:-1 group-title="Filmes",TELECINE PIPOCA H265
+http://10.165.132.109:5000/canal/292
+#EXTINF:-1 group-title="Filmes",TELECINE PIPOCA HD
+http://10.165.132.109:5000/canal/80
+#EXTINF:-1 group-title="Filmes",TELECINE PIPOCA SD
+http://10.165.132.109:5000/canal/554
+#EXTINF:-1 group-title="Filmes",TELECINE PREMIUM H265
+http://10.165.132.109:5000/canal/293
+#EXTINF:-1 group-title="Filmes",TELECINE PREMIUM HD
+http://10.165.132.109:5000/canal/81
+#EXTINF:-1 group-title="Filmes",TELECINE PREMIUM SD
+http://10.165.132.109:5000/canal/555
+#EXTINF:-1 group-title="Filmes",TELECINE TOUCH H265
+http://10.165.132.109:5000/canal/294
+#EXTINF:-1 group-title="Filmes",TELECINE TOUCH HD
+http://10.165.132.109:5000/canal/82
+#EXTINF:-1 group-title="Filmes",TELECINE TOUCH SD
+http://10.165.132.109:5000/canal/556
+
+
+#EXTINF:-1 group-title="Documentarios",TLC HD
+http://10.165.132.109:5000/canal/83
+#EXTINF:-1 group-title="Documentarios",TLC SD
+http://10.165.132.109:5000/canal/558
+
+
+#EXTINF:-1 group-title="Filmes",TNT FHD H265
+http://10.165.132.109:5000/canal/296
+#EXTINF:-1 group-title="Filmes",TNT HD
+http://10.165.132.109:5000/canal/84
+#EXTINF:-1 group-title="Filmes",TNT SD
+http://10.165.132.109:5000/canal/559
+#EXTINF:-1 group-title="Filmes",TNT SERIES FHD H265
+http://10.165.132.109:5000/canal/297
+#EXTINF:-1 group-title="Filmes",TNT SERIES HD
+http://10.165.132.109:5000/canal/85
+#EXTINF:-1 group-title="Filmes",TNT SERIES SD
+http://10.165.132.109:5000/canal/560
+
+#EXTINF:-1 group-title="Infantil",TOONCAST HD
+http://10.165.132.109:5000/canal/124
+#EXTINF:-1 group-title="Infantil",TOONCAST SD
+http://10.165.132.109:5000/canal/561
+
+#EXTINF:-1 group-title="Variedades",TRAVEL BOX BRASIL HD
+http://10.165.132.109:5000/canal/136
+#EXTINF:-1 group-title="Variedades",TRUT TV HD
+http://10.165.132.109:5000/canal/132
+#EXTINF:-1 group-title="Variedades",TRUT TV SD
+http://10.165.132.109:5000/canal/562
+
+#EXTINF:-1 group-title="Canais de TV",TV APARECIDA
+http://10.165.132.109:5000/canal/564
+#EXTINF:-1 group-title="Canais de TV",TV BRASIL
+http://10.165.132.109:5000/canal/121
+#EXTINF:-1 group-title="Canais de TV",TV CULTURA
+http://10.165.132.109:5000/canal/568
+#EXTINF:-1 group-title="Canais de TV",TV CÂMARA
+http://10.165.132.109:5000/canal/566
+#EXTINF:-1 group-title="Canais de TV",TV ESCOLA
+http://10.165.132.109:5000/canal/589
+#EXTINF:-1 group-title="Religiosos",TV EVANGELIZAR HD
+http://10.165.132.109:5000/canal/31750
+#EXTINF:-1 group-title="Variedades",WEB TV EXTREME
+http://10.165.132.109:5000/canal/60182
+#EXTINF:-1 group-title="Infantil",TV GLOOBINHO HD
+http://10.165.132.109:5000/canal/123
+#EXTINF:-1 group-title="Infantil",TV GLOOBINHO SD
+http://10.165.132.109:5000/canal/3905
+#EXTINF:-1 group-title="Canais de TV",TV JUSTIÇA
+http://10.165.132.109:5000/canal/569
+#EXTINF:-1 group-title="Esportes",TV NSPORTS HD (JOGO 1)
+http://10.165.132.109:5000/canal/163
+#EXTINF:-1 group-title="Esportes",TV NSPORTS HD (JOGO 2)
+http://10.165.132.109:5000/canal/164
+#EXTINF:-1 group-title="Esportes",TV NSPORTS HD (JOGO 3)
+http://10.165.132.109:5000/canal/165
+#EXTINF:-1 group-title="Infantil",TV RA-TIM-BUM HD
+http://10.165.132.109:5000/canal/88
+#EXTINF:-1 group-title="Infantil",TV RA-TIM-BUM SD
+http://10.165.132.109:5000/canal/571
+#EXTINF:-1 group-title="Canais de TV",TV SENADO
+http://10.165.132.109:5000/canal/572
+#EXTINF:-1 group-title="Canais de TV",TV SERIES SD
+http://10.165.132.109:5000/canal/60180
+#EXTINF:-1 group-title="Religiosos",TV UNIVERSAL HD
+http://10.165.132.109:5000/canal/31748
+#EXTINF:-1 group-title="Variedades",TVR VARIEDADES
+http://10.165.132.109:5000/canal/71138
+#EXTINF:-1 group-title="Canais de TV",UNIVERSAL CHANNEL FHD H265
+http://10.165.132.109:5000/canal/301
+#EXTINF:-1 group-title="Canais de TV",UNIVERSAL CHANNEL HD
+http://10.165.132.109:5000/canal/90
+#EXTINF:-1 group-title="Canais de TV",UNIVERSAL CHANNEL SD
+http://10.165.132.109:5000/canal/585
+#EXTINF:-1 group-title="Musica",VH1 HD
+http://10.165.132.109:5000/canal/91
+#EXTINF:-1 group-title="Musica",VH1 SD
+http://10.165.132.109:5000/canal/2958
+#EXTINF:-1 group-title="Canais de TV",GLOBOPLAY NOVELAS HD
+http://10.165.132.109:5000/canal/92
+#EXTINF:-1 group-title="Canais de TV",GLOBOPLAY NOVELAS SD
+http://10.165.132.109:5000/canal/580
+#EXTINF:-1 group-title="Filmes",WARNER CHANNEL FHD H265
+http://10.165.132.109:5000/canal/303
+#EXTINF:-1 group-title="Filmes",WARNER CHANNEL HD
+http://10.165.132.109:5000/canal/93
+#EXTINF:-1 group-title="Filmes",WARNER CHANNEL SD
+http://10.165.132.109:5000/canal/581
+#EXTINF:-1 group-title="Variedades",WOOHOO TV HD
+http://10.165.132.109:5000/canal/129
+#EXTINF:-1 group-title="Variedades",WOOHOO TV SD
+http://10.165.132.109:5000/canal/582
+#EXTINF:-1 group-title="Infantil",ZOOMOO HD
+http://10.165.132.109:5000/canal/833
+#EXTINF:-1 group-title="Infantil",ZOOMOO SD
+http://10.165.132.109:5000/canal/583
+
+#EXTINF:-1 group-title="Canais de TV",GLOBO TV ANHANGUERA GO HD
+http://10.165.132.109:5000/canal/86
+#EXTINF:-1 group-title="Religiosos",TV GIDEOES
+http://10.165.132.109:5000/canal/80159
+#EXTINF:-1 group-title="Canais de TV",SBT TV ARATU BAHIA SD
+http://10.165.132.109:5000/canal/80160
+#EXTINF:-1 group-title="Variedades",BONS TEMPOS TV
+http://10.165.132.109:5000/canal/80161
+
+#EXTINF:-1 group-title="4K",BAND 4K
+http://10.165.132.109:5000/canal/80551
+#EXTINF:-1 group-title="4K",RECORD 4K
+http://10.165.132.109:5000/canal/80552
+#EXTINF:-1 group-title="4K",PREMIERE CLUBES 4K
+http://10.165.132.109:5000/canal/80553
+#EXTINF:-1 group-title="4K",TELECINE PREMIUM 4K
+http://10.165.132.109:5000/canal/80554
+#EXTINF:-1 group-title="4K",TNT 4K
+http://10.165.132.109:5000/canal/80555
+#EXTINF:-1 group-title="4K",TNT SERIES 4K
+http://10.165.132.109:5000/canal/80556
+#EXTINF:-1 group-title="4K",ANIMAL PLANET 4K
+http://10.165.132.109:5000/canal/80557
+#EXTINF:-1 group-title="4K",CARTOON NETWORK 4K
+http://10.165.132.109:5000/canal/80558
+#EXTINF:-1 group-title="4K",COMBATE 4K
+http://10.165.132.109:5000/canal/80559
+#EXTINF:-1 group-title="4K",DISCOVERY CHANNEL 4K
+http://10.165.132.109:5000/canal/80560
+#EXTINF:-1 group-title="4K",GLOBO 4K
+http://10.165.132.109:5000/canal/80563
+#EXTINF:-1 group-title="4K",HBO 4K
+http://10.165.132.109:5000/canal/80564
+#EXTINF:-1 group-title="4K",MEGAPIX 4K
+http://10.165.132.109:5000/canal/80565
+#EXTINF:-1 group-title="4K",MULTISHOW 4K
+http://10.165.132.109:5000/canal/80566
+#EXTINF:-1 group-title="4K",SBT 4K
+http://10.165.132.109:5000/canal/80567
+#EXTINF:-1 group-title="4K",SPACE 4K
+http://10.165.132.109:5000/canal/80568
+#EXTINF:-1 group-title="4K",SPORTV 4K
+http://10.165.132.109:5000/canal/80569
+#EXTINF:-1 group-title="4K",HBO XTREME 4K
+http://10.165.132.109:5000/canal/80570
+#EXTINF:-1 group-title="4K",TELECINE PIPOCA 4K
+http://10.165.132.109:5000/canal/80575
+#EXTINF:-1 group-title="4K",JOVEM PAN NEWS 4K
+http://10.165.132.109:5000/canal/81009
+
+#EXTINF:-1 group-title="Religiosos",REDE SECULO 21 SD
+http://10.165.132.109:5000/canal/82126
+#EXTINF:-1 group-title="Religiosos",TV PAI ETERNO HD
+http://10.165.132.109:5000/canal/82127
+#EXTINF:-1 group-title="Religiosos",TV PAI ETERNO SD
+http://10.165.132.109:5000/canal/82128
+
+#EXTINF:-1 group-title="Variedades",GLN TV
+http://10.165.132.109:5000/canal/82855
+#EXTINF:-1 group-title="Canais de TV",TV DIARIO NORDESTE
+http://10.165.132.109:5000/canal/82856
+
+
+#EXTINF:-1 group-title="Variedades",MODO VIAGEM H265
+http://10.165.132.109:5000/canal/86000
+#EXTINF:-1 group-title="Variedades",MODO VIAGEM HD
+http://10.165.132.109:5000/canal/86001
+#EXTINF:-1 group-title="Variedades",MODO VIAGEM SD
+http://10.165.132.109:5000/canal/86002
+
+#EXTINF:-1 group-title="Canais de TV",GLOBO TV ANHANGUERA GO SD
+http://10.165.132.109:5000/canal/86090
+#EXTINF:-1 group-title="Canais de TV",GLOBO NSC CRICIUMA HD
+http://10.165.132.109:5000/canal/86414
+#EXTINF:-1 group-title="Canais de TV",GLOBO TV RIO SUL HD
+http://10.165.132.109:5000/canal/86682
+#EXTINF:-1 group-title="Canais de TV",GLOBO TV RIO SUL SD
+http://10.165.132.109:5000/canal/86683
+#EXTINF:-1 group-title="Variedades",REDE ALFA
+http://10.165.132.109:5000/canal/87726
+
+#EXTINF:-1 group-title="Filmes",CINE FAROESTE
+http://10.165.132.109:5000/canal/88962
+#EXTINF:-1 group-title="Filmes",CINE DISNEY
+http://10.165.132.109:5000/canal/88963
+#EXTINF:-1 group-title="Filmes",CINE STAR WARS
+http://10.165.132.109:5000/canal/88965
+#EXTINF:-1 group-title="Filmes",CINE FICÇÃO
+http://10.165.132.109:5000/canal/88966
+#EXTINF:-1 group-title="Filmes",CINE MARVEL
+http://10.165.132.109:5000/canal/88967
+
+
+#EXTINF:-1 group-title="Filmes",SONY MOVIES SD
+http://10.165.132.109:5000/canal/93697
+#EXTINF:-1 group-title="Filmes",SONY MOVIES HD
+http://10.165.132.109:5000/canal/93696
+#EXTINF:-1 group-title="Canais de TV",GLOBO RPC PARANAVAI SD
+http://10.165.132.109:5000/canal/94568
+#EXTINF:-1 group-title="Agro",AGRO+ HD
+http://10.165.132.109:5000/canal/428744
+#EXTINF:-1 group-title="Musica",TRACE BRASIL HD
+http://10.165.132.109:5000/canal/428888
+
+#EXTINF:-1 group-title="SBT+",SBT+ NOVELAS
+http://10.165.132.109:5000/canal/453188
+#EXTINF:-1 group-title="SBT+",SBT+ TVZYN
+http://10.165.132.109:5000/canal/453193
+
+
+#EXTINF:-1 group-title="Esportes",UFC FIGHT PASS 01
+http://10.165.132.109:5000/canal/86157
+#EXTINF:-1 group-title="Esportes",UFC FIGHT PASS 02
+http://10.165.132.109:5000/canal/84480
+#EXTINF:-1 group-title="Esportes",UFC FIGHT PASS 03
+http://10.165.132.109:5000/canal/84481
+#EXTINF:-1 group-title="4K",BR SPORT 4K
+http://10.165.132.109:5000/canal/454346
+#EXTINF:-1 group-title="Esportes",PREMIERE 8 HD
+http://10.165.132.109:5000/canal/466059
+#EXTINF:-1 group-title="Esportes",PREMIERE 8 SD
+http://10.165.132.109:5000/canal/466060
+#EXTINF:-1 group-title="4K",BR SPORT 4 4K
+http://10.165.132.109:5000/canal/497305
+#EXTINF:-1 group-title="Canais de TV",RECORD TV CIDADE CE HD
+http://10.165.132.109:5000/canal/499567
+#EXTINF:-1 group-title="Canais de TV",RECORD TV CONQUISTA MT
+http://10.165.132.109:5000/canal/499568
+#EXTINF:-1 group-title="Esportes",X SPORTS
+http://10.165.132.109:5000/canal/538625
+
+#EXTINF:-1 group-title="Esportes",SPORTYNET 01
+http://10.165.132.109:5000/canal/546884
+#EXTINF:-1 group-title="Esportes",SPORTYNET 02
+http://10.165.132.109:5000/canal/546885
+#EXTINF:-1 group-title="Esportes",SPORTYNET 03
+http://10.165.132.109:5000/canal/546886
+#EXTINF:-1 group-title="Esportes",SPORTYNET 04
+http://10.165.132.109:5000/canal/546887
