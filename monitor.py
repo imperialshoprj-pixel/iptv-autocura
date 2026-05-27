@@ -4,77 +4,63 @@ import schedule
 import time
 import threading
 from flask import Flask, jsonify
-
-# Configuração dos Canais
-canais_config = {
-    "universal_hd": [
-        "http://aguasdecoco.cdnxjp.space:80/03985093485/903482930834/90",
-        "http://link-backup-exemplo.com/stream"
-    ],
-    "warner_hd": [
-        "http://aguasdecoco.cdnxjp.space:80/03985093485/903482930834/93",
-        "http://link-backup-exemplo-2.com/stream"
-    ]
-}
+from concurrent.futures import ThreadPoolExecutor
 
 app = Flask(__name__)
+canais_ativos = {} # Cache em memória
 
-def testar_link(url):
+def carregar_config():
     try:
-        # Timeout reduzido para ser mais rápido
-        res = requests.get(url, timeout=3, stream=True)
-        return res.status_code == 200
+        with open('canais.json', 'r') as f:
+            return json.load(f)
     except:
-        return False
+        return {}
+
+def testar_link(canal_id, fontes):
+    for fonte in fontes:
+        try:
+            # timeout agressivo para manter o sistema rápido
+            res = requests.get(fonte, timeout=2, stream=True)
+            if res.status_code == 200:
+                return canal_id, fonte
+        except:
+            continue
+    return canal_id, None
 
 def atualizar_links():
-    print(f"[{time.strftime('%H:%M:%S')}] Iniciando checagem de links...")
-    melhores_links = {}
+    global canais_ativos
+    config = carregar_config()
+    print(f"[{time.strftime('%H:%M:%S')}] Checando {len(config)} canais...")
     
-    for canal, fontes in canais_config.items():
-        for fonte in fontes:
-            if testar_link(fonte):
-                melhores_links[canal] = fonte
-                break
+    novos_ativos = {}
+    # Testa 10 canais ao mesmo tempo para velocidade máxima
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        resultados = executor.map(lambda p: testar_link(p[0], p[1]), config.items())
     
-    with open('canais_ativos.json', 'w') as f:
-        json.dump(melhores_links, f, indent=4)
-    print("Check-up concluído e JSON atualizado.")
-
-# --- API ROTAS ---
-@app.route('/')
-def health_check():
-    return "Status: Online e Operacional", 200
+    for canal_id, link in resultados:
+        if link:
+            novos_ativos[canal_id] = link
+            
+    canais_ativos = novos_ativos # Atualiza o cache em memória
+    print("Check-up concluído. Canais ativos atualizados.")
 
 @app.route('/canal/<canal_id>')
 def get_canal(canal_id):
-    try:
-        with open('canais_ativos.json', 'r') as f:
-            canais = json.load(f)
-            if canal_id in canais:
-                return jsonify({"status": "ok", "url": canais[canal_id]})
-            return jsonify({"status": "error", "message": "Canal offline"}), 404
-    except:
-        return jsonify({"status": "error", "message": "Aguardando processamento"}), 503
+    if canal_id in canais_ativos:
+        return jsonify({"status": "ok", "url": canais_ativos[canal_id]})
+    return jsonify({"status": "error", "message": "Canal offline ou inexistente"}), 404
 
-# --- FLUXO DE EXECUÇÃO ---
 def rodar_api():
-    # Roda o servidor Flask na porta que o Render espera (10000)
     app.run(host='0.0.0.0', port=10000)
 
 if __name__ == "__main__":
-    print("Iniciando sistema unificado...")
-    
-    # 1. Execução inicial forçada
+    # Inicializa
     atualizar_links()
-    
-    # 2. Agenda o loop de monitoramento
     schedule.every(5).minutes.do(atualizar_links)
     
-    # 3. Inicia a API em Thread separada (não bloqueia o monitor)
+    # Inicia Web Server
     threading.Thread(target=rodar_api, daemon=True).start()
     
-    # 4. Loop principal do monitor (mantém o processo vivo)
     while True:
         schedule.run_pending()
         time.sleep(1)
