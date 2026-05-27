@@ -14,13 +14,13 @@ from urllib3.util.retry import Retry
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 app = Flask(__name__)
 
-# Cache de estado e compressão
+# Cache de estado
 canais_ativos = {}
-m3u_cache = b"" # Armazena a lista já comprimida (GZIP) para entrega instantânea
+m3u_cache = b""
 lock = threading.Lock()
 SENHA_PROTECAO = "minha_senha_secreta" 
 
-# Sessão otimizada para alta concorrência
+# Sessão otimizada
 session = requests.Session()
 adapter = HTTPAdapter(
     pool_connections=100, 
@@ -48,7 +48,6 @@ def testar_link(canal_info):
         return canal_id, None
 
 def gerar_m3u_comprimido(canais):
-    """Cria a lista M3U e a comprime para reduzir banda e evitar travamentos"""
     m3u = ["#EXTM3U"]
     for cid, url in canais.items():
         m3u.append(f'#EXTINF:-1, Canal {cid}')
@@ -71,12 +70,14 @@ def atualizar_links():
     
     novos_canais = {cid: url for cid, url in resultados if url}
     
-    # Atualiza Cache e prepara o GZIP em memória
+    # PROTEÇÃO: Só atualiza se encontrar canais, evitando enviar lista vazia pro app
     with lock:
-        canais_ativos = novos_canais
-        m3u_cache = gerar_m3u_comprimido(novos_canais)
-        
-    logging.info(f"Monitoramento: Concluído. {len(canais_ativos)} canais ativos.")
+        if len(novos_canais) > 0:
+            canais_ativos = novos_canais
+            m3u_cache = gerar_m3u_comprimido(novos_canais)
+            logging.info(f"Monitoramento: Sucesso. {len(canais_ativos)} canais ativos.")
+        else:
+            logging.error("Monitoramento falhou: Nenhum canal encontrado. Mantendo cache anterior.")
 
 # --- Rotas ---
 
@@ -84,6 +85,10 @@ def atualizar_links():
 def gerar_m3u():
     if request.args.get('senha') != SENHA_PROTECAO:
         abort(403)
+        
+    # Verifica se há algo no cache antes de responder
+    if not m3u_cache:
+        return "Lista em inicialização...", 503
         
     return Response(
         m3u_cache, 
@@ -99,15 +104,17 @@ def home():
     return jsonify({
         "status": "online",
         "canais_ativos": len(canais_ativos),
-        "ultima_atualizacao": time.strftime('%H:%M:%S'),
-        "proxima_atualizacao": "5 minutos"
+        "ultima_atualizacao": time.strftime('%H:%M:%S')
     })
 
 def loop_monitoramento():
+    # Primeira execução imediata
+    atualizar_links()
     while True:
-        atualizar_links()
         time.sleep(300) 
+        atualizar_links()
 
 if __name__ == "__main__":
     threading.Thread(target=loop_monitoramento, daemon=True).start()
+    # O app.run abaixo só deve ser usado localmente. No Render, use Gunicorn.
     app.run(host='0.0.0.0', port=10000)
