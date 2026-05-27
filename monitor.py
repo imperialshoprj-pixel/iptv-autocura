@@ -3,27 +3,29 @@ import json
 import time
 import threading
 import logging
-from flask import Flask, jsonify
+from flask import Flask, jsonify, Response, request, abort
 from concurrent.futures import ThreadPoolExecutor
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
 # --- Configurações ---
+# Filtra logs para evitar poluição no console do Render
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 app = Flask(__name__)
 
-# Configuração robusta de sessão para evitar "Connection pool is full"
+# Configuração robusta de sessão
 session = requests.Session()
 adapter = HTTPAdapter(
-    pool_connections=50, 
-    pool_maxsize=50,
-    max_retries=Retry(total=2, backoff_factor=0.5)
+    pool_connections=100, 
+    pool_maxsize=100,
+    max_retries=Retry(total=3, backoff_factor=1, status_forcelist=[502, 503, 504])
 )
 session.mount("http://", adapter)
 session.mount("https://", adapter)
-session.headers.update({'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'})
+session.headers.update({'User-Agent': 'Mozilla/5.0 (SmartTV; Tizen) AppleWebKit/537.36'})
 
 canais_ativos = {}
+SENHA_PROTECAO = "minha_senha_secreta" # <--- ALTERE AQUI A SUA SENHA
 
 def carregar_config():
     try:
@@ -34,15 +36,13 @@ def carregar_config():
         return {}
 
 def testar_link(canal_info):
-    """Testa o link e retorna ID e URL se estiver vivo."""
     canal_id, url = canal_info
     try:
-        # HEAD é suficiente e muito mais leve que GET
-        res = session.head(url, timeout=(3, 5), allow_redirects=True)
+        res = session.head(url, timeout=(3, 7), allow_redirects=True)
         if res.status_code == 200:
             return canal_id, url
-    except Exception as e:
-        logging.debug(f"Canal {canal_id} falhou: {e}")
+    except:
+        pass
     return canal_id, None
 
 def atualizar_links():
@@ -50,23 +50,26 @@ def atualizar_links():
     config = carregar_config()
     if not config: return
     
-    logging.info(f"Iniciando check-up de {len(config)} canais...")
-    
-    # Processamento paralelo otimizado
-    with ThreadPoolExecutor(max_workers=25) as executor:
+    logging.info(f"Monitoramento: Testando {len(config)} canais...")
+    with ThreadPoolExecutor(max_workers=20) as executor:
         resultados = executor.map(testar_link, config.items())
     
-    # Filtra apenas os que retornaram URL válida
-    novos_ativos = {cid: url for cid, url in resultados if url}
-            
-    canais_ativos = novos_ativos
-    logging.info(f"Check-up concluído. {len(canais_ativos)} canais ativos.")
+    canais_ativos = {cid: url for cid, url in resultados if url}
+    logging.info(f"Monitoramento: Concluído. {len(canais_ativos)} canais estão online.")
 
-@app.route('/canal/<canal_id>')
-def get_canal(canal_id):
-    if canal_id in canais_ativos:
-        return jsonify({"status": "ok", "url": canais_ativos[canal_id]})
-    return jsonify({"status": "error", "message": "Canal offline ou inexistente"}), 404
+# --- ROTAS ---
+
+@app.route('/lista.m3u')
+def gerar_m3u():
+    # Proteção de acesso
+    if request.args.get('senha') != SENHA_PROTECAO:
+        abort(403)
+        
+    m3u = ["#EXTM3U"]
+    for cid, url in canais_ativos.items():
+        m3u.append(f'#EXTINF:-1, Canal {cid}')
+        m3u.append(url)
+    return Response("\n".join(m3u), mimetype="application/x-mpegurl")
 
 @app.route('/')
 def home():
@@ -74,21 +77,14 @@ def home():
         "status": "online",
         "monitor_ativo": True,
         "canais_ativos": len(canais_ativos),
-        "ultima_atualizacao": time.strftime('%H:%M:%S')
+        "ultima_verificacao": time.strftime('%H:%M:%S')
     })
 
 def loop_monitoramento():
-    # Primeira execução imediata
-    atualizar_links()
-    # Loop de repetição
     while True:
-        time.sleep(300) # 5 minutos
         atualizar_links()
+        time.sleep(300) # Intervalo de 5 min
 
 if __name__ == "__main__":
-    # Inicia o worker de monitoramento
     threading.Thread(target=loop_monitoramento, daemon=True).start()
-    
-    # Inicia o servidor Flask
-    # Dica: Em produção no Render, use 'gunicorn monitor:app' no comando de start
     app.run(host='0.0.0.0', port=10000)
