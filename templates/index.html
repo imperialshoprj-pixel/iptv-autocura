@@ -2,33 +2,46 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Catálogo Netflix</title>
+    <title>StreamPro | Seu Cinema Online</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body { background-color: #141414; color: white; }
-        .card { background: #2f2f2f; border: none; transition: transform 0.3s; }
-        .card:hover { transform: scale(1.05); }
-        .card-img-top { height: 300px; object-fit: cover; }
-        .card-title { font-size: 1rem; padding: 10px; color: #fff; }
+        body { background: #141414; color: #fff; font-family: 'Segoe UI', sans-serif; }
+        .hero { height: 60vh; background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #141414 100%), url('https://wallpaperaccess.com/full/2665063.jpg'); background-size: cover; display: flex; align-items: flex-end; padding: 50px; }
+        .row-container { margin: 20px 0; padding: 0 40px; }
+        .movie-row { display: flex; overflow-x: auto; gap: 15px; scrollbar-width: none; }
+        .movie-row::-webkit-scrollbar { display: none; }
+        .card { min-width: 180px; border-radius: 8px; overflow: hidden; border: none; transition: 0.4s; cursor: pointer; background: #000; }
+        .card:hover { transform: scale(1.15); z-index: 10; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+        .card img { height: 260px; object-fit: cover; width: 100%; }
+        h2 { font-size: 1.5rem; margin-bottom: 15px; padding-left: 40px; color: #e50914; text-transform: uppercase; letter-spacing: 2px; }
     </style>
 </head>
 <body>
-    <div class="container py-5">
-        <h1 class="mb-4">Catálogo</h1>
-        <div class="row row-cols-2 row-cols-md-4 row-cols-lg-6 g-4">
+
+    <div class="hero">
+        <div><h1 class="display-3 fw-bold">Bem-vindo ao StreamPro</h1><p class="lead">O melhor conteúdo na palma da sua mão.</p></div>
+    </div>
+
+    {% set categorias = [] %}
+    {% for id, item in catalogo.items() %}
+        {% if item.genero not in categorias %}{% set _ = categorias.append(item.genero) %}{% endif %}
+    {% endfor %}
+
+    {% for cat in categorias %}
+    <h2>{{ cat }}</h2>
+    <div class="row-container">
+        <div class="movie-row">
             {% for id, item in catalogo.items() %}
-            <div class="col">
-                <div class="card h-100">
-                    <img src="{{ item.capa }}" class="card-img-top" alt="{{ item.titulo }}">
-                    <div class="card-body p-0">
-                        <h5 class="card-title">{{ item.titulo }}</h5>
-                        <a href="/filme/{{ id }}" class="btn btn-danger w-100">Assistir</a>
-                    </div>
+                {% if item.genero == cat %}
+                <div class="card">
+                    <a href="/filme/{{ id }}"><img src="{{ item.capa }}" alt="{{ item.titulo }}"></a>
                 </div>
-            </div>
+                {% endif %}
             {% endfor %}
         </div>
     </div>
+    {% endfor %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
