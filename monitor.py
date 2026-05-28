@@ -6,8 +6,10 @@ import json
 import os
 
 app = Flask(__name__)
-# DICA: No Render, altere essa chave para algo bem aleatório nas configurações de Environment Variables
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-key-123')
+
+# Configurações de Segurança
+# No Render, defina SECRET_KEY como uma variável de ambiente nas configurações
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'uma-chave-muito-segura-e-secreta')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///usuarios.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -15,7 +17,7 @@ db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 
-# Modelo de Usuário com Hashing
+# --- MODELO DO BANCO DE DADOS ---
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True, nullable=False)
@@ -31,7 +33,7 @@ class User(db.Model, UserMixin):
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-# --- Rotas de Autenticação ---
+# --- ROTAS DE AUTENTICAÇÃO ---
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -55,19 +57,23 @@ def registrar():
             novo_user.set_password(password)
             db.session.add(novo_user)
             db.session.commit()
+            flash('Conta criada com sucesso! Faça login.', 'success')
             return redirect(url_for('login'))
     return render_template('registrar.html')
 
 @app.route('/logout')
+@login_required
 def logout():
     logout_user()
     return redirect(url_for('login'))
 
-# --- Rotas do Sistema ---
+# --- ROTAS DO SISTEMA ---
 
 def carregar_catalogo():
-    if os.path.exists('canais.json'):
-        with open('canais.json', 'r', encoding='utf-8') as f:
+    # Caminho absoluto para garantir que o arquivo seja encontrado no Render
+    caminho_json = os.path.join(os.path.dirname(__file__), 'canais.json')
+    if os.path.exists(caminho_json):
+        with open(caminho_json, 'r', encoding='utf-8') as f:
             return json.load(f)
     return {}
 
@@ -85,8 +91,11 @@ def filme(filme_id):
         abort(404)
     return render_template('player.html', filme=filme_data)
 
+# --- INICIALIZAÇÃO ---
 if __name__ == '__main__':
     with app.app_context():
+        # Cria as tabelas do banco de dados na primeira execução
         db.create_all()
+    
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
