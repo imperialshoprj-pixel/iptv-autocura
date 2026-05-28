@@ -1,22 +1,26 @@
-def carregar_catalogo():
-    if not os.path.exists(JSON_PATH):
-        return {}
+import json
+
+def converter():
+    # Carrega seu JSON atual
+    with open('canais.json', 'r', encoding='utf-8') as f:
+        dados_antigos = json.load(f)
+
+    dados_novos = {}
     
-    with open(JSON_PATH, 'r', encoding='utf-8') as f:
-        data = json.load(f)
+    # Transforma cada item no novo formato
+    for cid, url in dados_antigos.items():
+        dados_novos[cid] = {
+            "titulo": f"Canal ou Filme {cid}", # Você edita o nome depois
+            "capa": "https://via.placeholder.com/200x300", # Placeholder padrão
+            "url": url,
+            "genero": "Geral"
+        }
+
+    # Salva o novo arquivo
+    with open('canais_novo.json', 'w', encoding='utf-8') as f:
+        json.dump(dados_novos, f, indent=4, ensure_ascii=False)
     
-    # Verifica se o JSON ainda está no formato antigo (apenas URL)
-    # Se for, ele transforma em tempo real para o formato novo
-    primeiro_item = list(data.values())[0]
-    if isinstance(primeiro_item, str):
-        novo_catalogo = {}
-        for cid, url in data.items():
-            novo_catalogo[cid] = {
-                "titulo": f"Canal {cid}",
-                "capa": "https://via.placeholder.com/200x300",
-                "url": url,
-                "genero": "Diversos"
-            }
-        return novo_catalogo
-        
-    return data # Já está no formato novo
+    print("Conversão concluída! O arquivo 'canais_novo.json' foi criado.")
+
+if __name__ == "__main__":
+    converter()
