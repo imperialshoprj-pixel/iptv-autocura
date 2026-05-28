@@ -4,35 +4,31 @@ from flask import Flask, render_template, abort
 
 app = Flask(__name__)
 
-# O arquivo canais.json agora deve conter a estrutura de filmes/series
+# O arquivo JSON que geramos com o script de conversão
 JSON_PATH = 'canais.json'
 
 def carregar_catalogo():
-    """Carrega o catálogo visual a partir do JSON."""
+    """Lê o seu novo arquivo canais.json estruturado."""
     if not os.path.exists(JSON_PATH):
         return {}
-    try:
-        with open(JSON_PATH, 'r', encoding='utf-8') as f:
-            return json.load(f)
-    except Exception as e:
-        print(f"Erro ao carregar JSON: {e}")
-        return {}
+    with open(JSON_PATH, 'r', encoding='utf-8') as f:
+        return json.load(f)
 
 @app.route('/')
 def index():
-    """Exibe o catálogo estilo Netflix."""
+    # Envia o catálogo inteiro para a página HTML
     catalogo = carregar_catalogo()
     return render_template('index.html', catalogo=catalogo)
 
-@app.route('/assistir/<item_id>')
-def assistir(item_id):
-    """Página de player para um item específico."""
+@app.route('/filme/<filme_id>')
+def detalhe(filme_id):
+    """Exibe o player para o filme/canal clicado."""
     catalogo = carregar_catalogo()
-    item = catalogo.get(item_id)
-    if not item:
-        abort(404)
-    return render_template('player.html', item=item)
+    filme = catalogo.get(filme_id)
+    if not filme:
+        abort(404) # Se não existir, mostra erro 404
+    return render_template('player.html', filme=filme)
 
 if __name__ == "__main__":
-    # O Render usa a porta 10000 por padrão
+    # O Render ignora a porta 10000 e usa a dele, mas manter assim é seguro
     app.run(host='0.0.0.0', port=10000)
