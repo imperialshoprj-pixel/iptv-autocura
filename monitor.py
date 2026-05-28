@@ -4,6 +4,7 @@ import time
 import threading
 import logging
 import gzip
+import os
 from io import BytesIO
 from flask import Flask, jsonify, Response, request, abort
 from concurrent.futures import ThreadPoolExecutor
@@ -20,6 +21,10 @@ m3u_cache = b""
 lock = threading.Lock()
 SENHA_PROTECAO = "minha_senha_secreta" 
 
+# Caminho absoluto para o arquivo JSON (Garante que funcione no Render)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+JSON_PATH = os.path.join(BASE_DIR, 'canais.json')
+
 # Sessão otimizada
 session = requests.Session()
 adapter = HTTPAdapter(
@@ -33,15 +38,17 @@ session.headers.update({'User-Agent': 'Mozilla/5.0 (SmartTV; Tizen) AppleWebKit/
 
 def carregar_config():
     try:
-        with open('canais.json', 'r') as f:
+        logging.info(f"Tentando ler JSON em: {JSON_PATH}")
+        with open(JSON_PATH, 'r', encoding='utf-8') as f:
             return json.load(f)
     except Exception as e:
-        logging.error(f"Erro ao ler canais.json: {e}")
+        logging.error(f"ERRO CRÍTICO ao ler canais.json: {e}")
         return {}
 
 def testar_link(canal_info):
     canal_id, url = canal_info
     try:
+        # Usamos HEAD para validar se o servidor de origem está respondendo
         res = session.head(url, timeout=(2, 5), allow_redirects=True)
         return canal_id, url if res.status_code == 200 else None
     except:
@@ -50,7 +57,7 @@ def testar_link(canal_info):
 def gerar_m3u_comprimido(canais):
     m3u = ["#EXTM3U"]
     for cid, url in canais.items():
-        m3u.append(f'#EXTINF:-1, Canal {cid}')
+        m3u.append(f'#EXTINF:-1, {cid}') # Corrigido para formato padrão
         m3u.append(url)
     
     buf = BytesIO()
@@ -61,7 +68,9 @@ def gerar_m3u_comprimido(canais):
 def atualizar_links():
     global canais_ativos, m3u_cache
     config = carregar_config()
-    if not config: return
+    if not config: 
+        logging.error("Configuração vazia. Verifique se canais.json existe no servidor.")
+        return
     
     logging.info(f"Monitoramento: Verificando {len(config)} canais...")
     
@@ -70,34 +79,30 @@ def atualizar_links():
     
     novos_canais = {cid: url for cid, url in resultados if url}
     
-    # PROTEÇÃO: Só atualiza se encontrar canais, evitando enviar lista vazia pro app
     with lock:
-        if len(novos_canais) > 0:
+        if novos_canais:
             canais_ativos = novos_canais
             m3u_cache = gerar_m3u_comprimido(novos_canais)
             logging.info(f"Monitoramento: Sucesso. {len(canais_ativos)} canais ativos.")
         else:
-            logging.error("Monitoramento falhou: Nenhum canal encontrado. Mantendo cache anterior.")
-
-# --- Rotas ---
+            logging.error("Monitoramento falhou: Nenhum canal pôde ser validado.")
 
 @app.route('/lista.m3u')
 def gerar_m3u():
     if request.args.get('senha') != SENHA_PROTECAO:
         abort(403)
         
-    # Verifica se há algo no cache antes de responder
-    if not m3u_cache:
-        return "Lista em inicialização...", 503
-        
-    return Response(
-        m3u_cache, 
-        mimetype="application/x-mpegurl",
-        headers={
-            "Content-Encoding": "gzip",
-            "Content-Disposition": "attachment; filename=lista.m3u"
-        }
-    )
+    with lock:
+        if not m3u_cache:
+            return "Aguardando processamento dos canais...", 503
+        return Response(
+            m3u_cache, 
+            mimetype="application/x-mpegurl",
+            headers={
+                "Content-Encoding": "gzip",
+                "Content-Disposition": "attachment; filename=lista.m3u"
+            }
+        )
 
 @app.route('/')
 def home():
@@ -108,13 +113,11 @@ def home():
     })
 
 def loop_monitoramento():
-    # Primeira execução imediata
-    atualizar_links()
     while True:
-        time.sleep(300) 
         atualizar_links()
+        time.sleep(300) 
 
 if __name__ == "__main__":
+    # Inicia monitoramento antes do servidor
     threading.Thread(target=loop_monitoramento, daemon=True).start()
-    # O app.run abaixo só deve ser usado localmente. No Render, use Gunicorn.
     app.run(host='0.0.0.0', port=10000)
