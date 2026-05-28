@@ -2,37 +2,51 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>StreamPro | Seu Cinema Online</title>
+    <title>Netflix Clone</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body { background: #141414; color: #fff; font-family: 'Segoe UI', sans-serif; }
-        .hero { height: 60vh; background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #141414 100%), url('https://wallpaperaccess.com/full/2665063.jpg'); background-size: cover; display: flex; align-items: flex-end; padding: 50px; }
-        .row-container { margin: 20px 0; padding: 0 40px; }
-        .movie-row { display: flex; overflow-x: auto; gap: 15px; scrollbar-width: none; }
-        .movie-row::-webkit-scrollbar { display: none; }
-        .card { min-width: 180px; border-radius: 8px; overflow: hidden; border: none; transition: 0.4s; cursor: pointer; background: #000; }
-        .card:hover { transform: scale(1.15); z-index: 10; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
-        .card img { height: 260px; object-fit: cover; width: 100%; }
-        h2 { font-size: 1.5rem; margin-bottom: 15px; padding-left: 40px; color: #e50914; text-transform: uppercase; letter-spacing: 2px; }
+        :root { --netflix-red: #E50914; --bg-dark: #141414; }
+        body { background-color: var(--bg-dark); color: white; font-family: 'Helvetica Neue', Arial, sans-serif; }
+        
+        /* Navbar */
+        .navbar { background: linear-gradient(to bottom, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0)); padding: 20px 50px; }
+        .nav-link { color: white !important; font-size: 0.9rem; margin-right: 20px; }
+
+        /* Categorias e Linhas */
+        .category-row { margin-bottom: 40px; padding-left: 50px; }
+        .row-title { font-size: 1.4rem; font-weight: bold; margin-bottom: 15px; }
+        .movie-slider { display: flex; overflow-x: auto; gap: 10px; scroll-behavior: smooth; }
+        .movie-slider::-webkit-scrollbar { display: none; }
+
+        /* Cards */
+        .card { min-width: 250px; height: 140px; background: #000; border: none; cursor: pointer; transition: 0.4s; border-radius: 4px; overflow: hidden; }
+        .card:hover { transform: scale(1.15); z-index: 10; border: 2px solid white; }
+        .card img { width: 100%; height: 100%; object-fit: cover; }
     </style>
 </head>
 <body>
 
-    <div class="hero">
-        <div><h1 class="display-3 fw-bold">Bem-vindo ao StreamPro</h1><p class="lead">O melhor conteúdo na palma da sua mão.</p></div>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <a class="navbar-brand text-danger fw-bold" href="#">NETFLIX</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="#">Início</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Séries</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Filmes</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    {% set categorias = [] %}
-    {% for id, item in catalogo.items() %}
-        {% if item.genero not in categorias %}{% set _ = categorias.append(item.genero) %}{% endif %}
-    {% endfor %}
+    <div style="height: 100px;"></div>
 
-    {% for cat in categorias %}
-    <h2>{{ cat }}</h2>
-    <div class="row-container">
-        <div class="movie-row">
+    {% set generos = ['Ação', 'Séries', 'Animes'] %}
+    
+    {% for genero_alvo in generos %}
+    <div class="category-row">
+        <div class="row-title">{{ genero_alvo }}</div>
+        <div class="movie-slider">
             {% for id, item in catalogo.items() %}
-                {% if item.genero == cat %}
+                {% if item.genero == genero_alvo %}
                 <div class="card">
                     <a href="/filme/{{ id }}"><img src="{{ item.capa }}" alt="{{ item.titulo }}"></a>
                 </div>
@@ -42,6 +56,5 @@
     </div>
     {% endfor %}
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
