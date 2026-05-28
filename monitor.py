@@ -8,9 +8,12 @@ import os
 app = Flask(__name__)
 
 # Configurações de Segurança
-# No Render, defina SECRET_KEY como uma variável de ambiente nas configurações
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'uma-chave-muito-segura-e-secreta')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///usuarios.db'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'chave-super-secreta-altere-isso')
+
+# CORREÇÃO PARA O RENDER: O banco deve estar em uma pasta persistente ou na raiz.
+# Usamos o caminho absoluto baseado no diretório do arquivo.
+basedir = os.path.abspath(os.path.dirname(__file__))
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'usuarios.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -38,8 +41,10 @@ def load_user(user_id):
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        user = User.query.filter_by(username=request.form.get('username')).first()
-        if user and user.check_password(request.form.get('password')):
+        username = request.form.get('username')
+        password = request.form.get('password')
+        user = User.query.filter_by(username=username).first()
+        if user and user.check_password(password):
             login_user(user)
             return redirect(url_for('index'))
         flash('Usuário ou senha inválidos!', 'danger')
@@ -57,7 +62,7 @@ def registrar():
             novo_user.set_password(password)
             db.session.add(novo_user)
             db.session.commit()
-            flash('Conta criada com sucesso! Faça login.', 'success')
+            flash('Conta criada com sucesso!', 'success')
             return redirect(url_for('login'))
     return render_template('registrar.html')
 
@@ -70,7 +75,6 @@ def logout():
 # --- ROTAS DO SISTEMA ---
 
 def carregar_catalogo():
-    # Caminho absoluto para garantir que o arquivo seja encontrado no Render
     caminho_json = os.path.join(os.path.dirname(__file__), 'canais.json')
     if os.path.exists(caminho_json):
         with open(caminho_json, 'r', encoding='utf-8') as f:
@@ -93,8 +97,8 @@ def filme(filme_id):
 
 # --- INICIALIZAÇÃO ---
 if __name__ == '__main__':
+    # O contexto do aplicativo garante que o banco seja criado corretamente
     with app.app_context():
-        # Cria as tabelas do banco de dados na primeira execução
         db.create_all()
     
     port = int(os.environ.get('PORT', 5000))
