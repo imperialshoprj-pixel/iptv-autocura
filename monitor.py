@@ -20,6 +20,7 @@ def validar_canal(cid, url):
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
             'Range': 'bytes=0-1024',
             'Referer': 'http://aguasdecoco.cdnxjp.space/'
+            'X-Forwarded-For': '192.168.1.1'
         }
         r = http.request('GET', url, timeout=7.0, headers=headers, redirect=True)
         if r.status in [200, 206]:
