@@ -3,7 +3,7 @@ from io import BytesIO
 from flask import Flask, Response, request
 import urllib3
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 app = Flask(__name__)
 
 # Cache global
@@ -35,9 +35,14 @@ def validar_canal(cid, url):
     return None
 
 def atualizar():
-    if not os.path.exists(JSON_PATH): return
+    if not os.path.exists(JSON_PATH): 
+        logging.error("Arquivo canais.json não encontrado!")
+        return
+    
     with open(JSON_PATH, 'r', encoding='utf-8') as f:
         data = json.load(f)
+    
+    logging.info(f"Iniciando validação de {len(data)} canais...")
     
     validos = {}
     # Processamento um por um respeitando o servidor de origem
@@ -45,7 +50,12 @@ def atualizar():
         res = validar_canal(cid, url)
         if res:
             validos[res[0]] = res[1]
-            time.sleep(0.5) # Pausa estratégica para evitar bloqueios
+            logging.info(f"Canal {cid} validado com sucesso!")
+        else:
+            logging.warning(f"Canal {cid} falhou na validação.")
+        time.sleep(0.5) # Pausa estratégica
+    
+    logging.info(f"Validação finalizada. Total: {len(validos)} ativos.")
     
     if validos:
         m3u = ["#EXTM3U"]
