@@ -2,60 +2,49 @@ import json, time, threading, logging, gzip, os
 from io import BytesIO
 from flask import Flask, Response, request
 import urllib3
+from concurrent.futures import ThreadPoolExecutor
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 app = Flask(__name__)
 
-# Cache global
+# Configurações
 state = {"canais": {}, "m3u": b"", "last": "Aguardando..."}
 lock = threading.Lock()
 JSON_PATH = 'canais.json'
-
-# Cliente HTTP configurado para seguir redirecionamentos
-http = urllib3.PoolManager(maxsize=1, block=True)
+# Pool de conexões controlado para não saturar a rede
+http = urllib3.PoolManager(maxsize=10, block=True)
 
 def validar_canal(cid, url):
-    """
-    Versão otimizada: simula uma SmartTV e segue redirecionamentos
-    """
     try:
         headers = {
-            'User-Agent': 'Mozilla/5.0 (SmartHub; SMART-TV; U; smt740; BR) AppleWebKit/537.36 (KHTML, like Gecko) SmartTV Safari/537.36',
-            'Accept': '*/*',
-            'Connection': 'keep-alive'
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+            'Range': 'bytes=0-1024',
+            'Referer': 'http://aguasdecoco.cdnxjp.space/'
         }
-        # redirect=True segue o caminho do servidor final
-        r = http.request('GET', url, timeout=10.0, headers=headers, redirect=True)
-        
-        # Aceita status 200 (OK) ou 206 (Conteúdo parcial de vídeo)
+        r = http.request('GET', url, timeout=7.0, headers=headers, redirect=True)
         if r.status in [200, 206]:
             return cid, url
     except Exception as e:
-        logging.warning(f"Erro ao validar canal {cid}: {e}")
+        logging.debug(f"Canal {cid} falhou: {e}")
     return None
 
 def atualizar():
-    if not os.path.exists(JSON_PATH): 
-        logging.error("Arquivo canais.json não encontrado!")
-        return
-    
+    if not os.path.exists(JSON_PATH): return
     with open(JSON_PATH, 'r', encoding='utf-8') as f:
         data = json.load(f)
     
-    logging.info(f"Iniciando validação de {len(data)} canais...")
+    logging.info(f"Iniciando varredura paralela de {len(data)} canais...")
     
     validos = {}
-    # Processamento um por um respeitando o servidor de origem
-    for cid, url in data.items():
-        res = validar_canal(cid, url)
+    # ThreadPoolExecutor permite validar vários canais simultaneamente sem travar o app
+    with ThreadPoolExecutor(max_workers=5) as executor:
+        resultados = executor.map(lambda item: validar_canal(item[0], item[1]), data.items())
+        
+    for res in resultados:
         if res:
             validos[res[0]] = res[1]
-            logging.info(f"Canal {cid} validado com sucesso!")
-        else:
-            logging.warning(f"Canal {cid} falhou na validação.")
-        time.sleep(0.5) # Pausa estratégica
     
-    logging.info(f"Validação finalizada. Total: {len(validos)} ativos.")
+    logging.info(f"Validação concluída: {len(validos)} ativos.")
     
     if validos:
         m3u = ["#EXTM3U"]
@@ -73,7 +62,7 @@ def atualizar():
 
 @app.route('/')
 def home():
-    return f"Status: OK | Canais: {len(state['canais'])} | Última: {state['last']}"
+    return f"Status: OK | Ativos: {len(state['canais'])} | Última att: {state['last']}"
 
 @app.route('/lista.m3u')
 def m3u():
@@ -85,7 +74,7 @@ def m3u():
 def loop():
     while True:
         atualizar()
-        time.sleep(1800) # Atualiza a cada 30 minutos
+        time.sleep(3600) # Intervalo aumentado para 1 hora (evita bloqueio)
 
 if __name__ == "__main__":
     threading.Thread(target=loop, daemon=True).start()
