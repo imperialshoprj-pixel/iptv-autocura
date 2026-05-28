@@ -46,18 +46,31 @@ def carregar_config():
         return {}
 
 def testar_link(canal_info):
+    """
+    Testa o link usando HEAD primeiro. Se falhar, tenta um GET rápido
+    para contornar servidores que bloqueiam apenas requisições HEAD.
+    """
     canal_id, url = canal_info
     try:
-        # Usamos HEAD para validar se o servidor de origem está respondendo
-        res = session.head(url, timeout=(2, 5), allow_redirects=True)
-        return canal_id, url if res.status_code == 200 else None
-    except:
+        # Tentativa 1: HEAD (Rápido)
+        res = session.head(url, timeout=(3, 7), allow_redirects=True)
+        if res.status_code == 200:
+            return canal_id, url
+        
+        # Tentativa 2: GET (Fallback para servidores bloqueadores)
+        res = session.get(url, timeout=(3, 7), stream=True, allow_redirects=True)
+        if res.status_code == 200:
+            res.close()
+            return canal_id, url
+            
+        return canal_id, None
+    except Exception:
         return canal_id, None
 
 def gerar_m3u_comprimido(canais):
     m3u = ["#EXTM3U"]
     for cid, url in canais.items():
-        m3u.append(f'#EXTINF:-1, {cid}') # Corrigido para formato padrão
+        m3u.append(f'#EXTINF:-1, Canal {cid}')
         m3u.append(url)
     
     buf = BytesIO()
@@ -69,7 +82,7 @@ def atualizar_links():
     global canais_ativos, m3u_cache
     config = carregar_config()
     if not config: 
-        logging.error("Configuração vazia. Verifique se canais.json existe no servidor.")
+        logging.error("Configuração vazia. Verifique se canais.json existe na raiz.")
         return
     
     logging.info(f"Monitoramento: Verificando {len(config)} canais...")
@@ -94,7 +107,7 @@ def gerar_m3u():
         
     with lock:
         if not m3u_cache:
-            return "Aguardando processamento dos canais...", 503
+            return "Aguardando processamento inicial dos canais...", 503
         return Response(
             m3u_cache, 
             mimetype="application/x-mpegurl",
@@ -113,11 +126,12 @@ def home():
     })
 
 def loop_monitoramento():
+    # Primeira execução imediata ao iniciar
+    atualizar_links()
     while True:
+        time.sleep(300) # Intervalo de 5 minutos
         atualizar_links()
-        time.sleep(300) 
 
 if __name__ == "__main__":
-    # Inicia monitoramento antes do servidor
     threading.Thread(target=loop_monitoramento, daemon=True).start()
     app.run(host='0.0.0.0', port=10000)
