@@ -2,24 +2,68 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>{{ filme.titulo }}</title>
-    <link href="https://vjs.zencdn.net/8.3.0/video-js.css" rel="stylesheet" />
+    <title>Assistindo: {{ filme.titulo }}</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
-        body { background: #000; color: #fff; margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
-        .video-js { width: 90%; max-width: 900px; height: 500px; }
+        body { 
+            background: #000; 
+            color: #fff; 
+            margin: 0; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            font-family: Arial, sans-serif;
+        }
+        
+        /* Botão Voltar */
+        .header-area {
+            width: 90%;
+            max-width: 800px;
+            padding: 20px 0;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .btn-voltar {
+            background: #E50914;
+            color: white;
+            padding: 8px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn-voltar:hover { background: #b20710; }
+
+        h2 { margin: 10px 0; }
+        
+        /* Container do vídeo */
+        #video-container { width: 90%; max-width: 800px; margin-top: 10px; }
+        video { width: 100%; border-radius: 8px; }
     </style>
 </head>
 <body>
 
+    <div class="header-area">
+        <a href="/" class="btn-voltar">← Voltar para o Catálogo</a>
+    </div>
+
     <h2>{{ filme.titulo }}</h2>
 
-    <video id="meu-video" class="video-js vjs-big-play-centered" controls preload="auto">
-        <source src="{{ filme.url }}" type="application/x-mpegURL"> <source src="{{ filme.url }}" type="video/mp4">             </video>
+    <div id="video-container">
+        <video id="video" controls autoplay></video>
+    </div>
 
-    <script src="https://vjs.zencdn.net/8.3.0/video.min.js"></script>
     <script>
-        var player = videojs('meu-video');
+        var video = document.getElementById('video');
+        var videoSrc = '{{ filme.url }}';
+        
+        if (Hls.isSupported()) {
+            var hls = new Hls();
+            hls.loadSource(videoSrc);
+            hls.attachMedia(video);
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            video.src = videoSrc;
+        }
     </script>
-
 </body>
 </html>
