@@ -1,52 +1,74 @@
-import json, time, threading, logging, gzip, os
+import json
+import time
+import threading
+import logging
+import gzip
+import os
+import urllib3
 from io import BytesIO
 from flask import Flask, Response, request
-import urllib3
 from concurrent.futures import ThreadPoolExecutor
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+# Configuração de Log Profissional
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - [%(levelname)s] - %(message)s')
+logger = logging.getLogger(__name__)
+
 app = Flask(__name__)
 
-# Configurações
+# Cache de estado com proteção de thread
 state = {"canais": {}, "m3u": b"", "last": "Aguardando..."}
 lock = threading.Lock()
 JSON_PATH = 'canais.json'
-# Pool de conexões controlado para não saturar a rede
-http = urllib3.PoolManager(maxsize=10, block=True)
+
+# Configuração de Pool HTTP de Alta Performance
+http = urllib3.PoolManager(
+    maxsize=20, 
+    block=True, 
+    timeout=urllib3.Timeout(connect=5.0, read=10.0)
+)
 
 def validar_canal(cid, url):
+    """Validação robusta com headers de navegador e tratamento de exceção."""
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+        'Range': 'bytes=0-1024',
+        'Referer': 'http://aguasdecoco.cdnxjp.space/',
+        'X-Forwarded-For': '190.150.10.25' # IP mascarado
+    }
     try:
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-            'Range': 'bytes=0-1024',
-            'Referer': 'http://aguasdecoco.cdnxjp.space/'
-            'X-Forwarded-For': '192.168.1.1'
-        }
-        r = http.request('GET', url, timeout=7.0, headers=headers, redirect=True)
-        if r.status in [200, 206]:
+        r = http.request('GET', url, headers=headers, redirect=True)
+        # Status 200, 206 (Conteúdo parcial) e até 301/302 (Redirecionamento) são aceitos
+        if r.status in [200, 206, 301, 302]:
             return cid, url
     except Exception as e:
-        logging.debug(f"Canal {cid} falhou: {e}")
+        logger.debug(f"Canal {cid} indisponível: {e}")
     return None
 
 def atualizar():
-    if not os.path.exists(JSON_PATH): return
-    with open(JSON_PATH, 'r', encoding='utf-8') as f:
-        data = json.load(f)
+    """Lógica principal de atualização com tratamento de erros de arquivo."""
+    if not os.path.exists(JSON_PATH):
+        logger.error(f"Arquivo {JSON_PATH} não encontrado!")
+        return
     
-    logging.info(f"Iniciando varredura paralela de {len(data)} canais...")
+    try:
+        with open(JSON_PATH, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+    except Exception as e:
+        logger.error(f"Erro ao ler JSON: {e}")
+        return
+
+    logger.info(f"Iniciando ciclo de validação para {len(data)} canais.")
     
     validos = {}
-    # ThreadPoolExecutor permite validar vários canais simultaneamente sem travar o app
-    with ThreadPoolExecutor(max_workers=5) as executor:
+    # Processamento paralelo eficiente
+    with ThreadPoolExecutor(max_workers=10) as executor:
         resultados = executor.map(lambda item: validar_canal(item[0], item[1]), data.items())
         
     for res in resultados:
         if res:
             validos[res[0]] = res[1]
     
-    logging.info(f"Validação concluída: {len(validos)} ativos.")
-    
+    # Atualização atômica do cache
     if validos:
         m3u = ["#EXTM3U"]
         for c, u in validos.items():
@@ -59,24 +81,30 @@ def atualizar():
         with lock:
             state["canais"] = validos
             state["m3u"] = buf.getvalue()
-            state["last"] = time.strftime('%H:%M:%S')
+            state["last"] = time.strftime('%Y-%m-%d %H:%M:%S')
+        logger.info(f"Ciclo concluído. {len(validos)} canais ativos.")
+    else:
+        logger.warning("Nenhum canal validado com sucesso nesta rodada.")
 
 @app.route('/')
 def home():
-    return f"Status: OK | Ativos: {len(state['canais'])} | Última att: {state['last']}"
+    return f"Sistema Online | Ativos: {len(state['canais'])} | Última att: {state['last']}"
 
 @app.route('/lista.m3u')
 def m3u():
-    if request.args.get('senha') != "admin": return "Erro 403", 403
+    senha = request.args.get('senha')
+    if senha != "admin": return "Acesso Negado", 403
     with lock:
-        if not state["m3u"]: return "Processando...", 503
+        if not state["m3u"]: return "Aguardando processamento inicial...", 503
         return Response(state["m3u"], mimetype="application/x-mpegurl", headers={"Content-Encoding": "gzip"})
 
-def loop():
+def loop_background():
+    """Loop infinito com espera inicial."""
     while True:
         atualizar()
-        time.sleep(3600) # Intervalo aumentado para 1 hora (evita bloqueio)
+        time.sleep(3600) # Atualiza a cada hora para poupar recursos
 
 if __name__ == "__main__":
-    threading.Thread(target=loop, daemon=True).start()
+    # Inicia o worker em segundo plano
+    threading.Thread(target=loop_background, daemon=True).start()
     app.run(host='0.0.0.0', port=10000)
