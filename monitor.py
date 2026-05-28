@@ -11,16 +11,27 @@ state = {"canais": {}, "m3u": b"", "last": "Aguardando..."}
 lock = threading.Lock()
 JSON_PATH = 'canais.json'
 
-# Cliente HTTP sem pool persistente (mais lento, mas impossível de dar erro de pool)
+# Cliente HTTP configurado para seguir redirecionamentos
 http = urllib3.PoolManager(maxsize=1, block=True)
 
 def validar_canal(cid, url):
+    """
+    Versão otimizada: simula uma SmartTV e segue redirecionamentos
+    """
     try:
-        # Request único e isolado
-        r = http.request('GET', url, timeout=3.0)
-        if r.status == 200:
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (SmartHub; SMART-TV; U; smt740; BR) AppleWebKit/537.36 (KHTML, like Gecko) SmartTV Safari/537.36',
+            'Accept': '*/*',
+            'Connection': 'keep-alive'
+        }
+        # redirect=True segue o caminho do servidor final
+        r = http.request('GET', url, timeout=10.0, headers=headers, redirect=True)
+        
+        # Aceita status 200 (OK) ou 206 (Conteúdo parcial de vídeo)
+        if r.status in [200, 206]:
             return cid, url
-    except: pass
+    except Exception as e:
+        logging.warning(f"Erro ao validar canal {cid}: {e}")
     return None
 
 def atualizar():
@@ -29,12 +40,12 @@ def atualizar():
         data = json.load(f)
     
     validos = {}
-    # Processamento estritamente um por um (respeitoso com o servidor de origem)
+    # Processamento um por um respeitando o servidor de origem
     for cid, url in data.items():
         res = validar_canal(cid, url)
         if res:
             validos[res[0]] = res[1]
-            time.sleep(0.5) # Pausa estratégica para não ser bloqueado por Flood
+            time.sleep(0.5) # Pausa estratégica para evitar bloqueios
     
     if validos:
         m3u = ["#EXTM3U"]
@@ -64,7 +75,7 @@ def m3u():
 def loop():
     while True:
         atualizar()
-        time.sleep(1800) # Atualiza a cada 30 minutos (mais estável)
+        time.sleep(1800) # Atualiza a cada 30 minutos
 
 if __name__ == "__main__":
     threading.Thread(target=loop, daemon=True).start()
