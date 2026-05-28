@@ -15,12 +15,12 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
-# Cache de estado com proteção de thread
+# Cache de estado
 state = {"canais": {}, "m3u": b"", "last": "Aguardando..."}
 lock = threading.Lock()
 JSON_PATH = 'canais.json'
 
-# Configuração de Pool HTTP de Alta Performance
+# Pool HTTP configurado
 http = urllib3.PoolManager(
     maxsize=20, 
     block=True, 
@@ -28,24 +28,25 @@ http = urllib3.PoolManager(
 )
 
 def validar_canal(cid, url):
-    """Validação robusta com headers de navegador e tratamento de exceção."""
+    """Valida o link original sem seguir redirecionamentos."""
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
         'Range': 'bytes=0-1024',
         'Referer': 'http://aguasdecoco.cdnxjp.space/',
-        'X-Forwarded-For': '190.150.10.25' # IP mascarado
+        'X-Forwarded-For': '190.150.10.25'
     }
     try:
-        r = http.request('GET', url, headers=headers, redirect=True)
-        # Status 200, 206 (Conteúdo parcial) e até 301/302 (Redirecionamento) são aceitos
-        if r.status in [200, 206, 301, 302]:
+        # A MUDANÇA ESTÁ AQUI: redirect=False
+        r = http.request('GET', url, headers=headers, redirect=False)
+        
+        # Aceita apenas o link original (status 200)
+        if r.status == 200:
             return cid, url
     except Exception as e:
         logger.debug(f"Canal {cid} indisponível: {e}")
     return None
 
 def atualizar():
-    """Lógica principal de atualização com tratamento de erros de arquivo."""
     if not os.path.exists(JSON_PATH):
         logger.error(f"Arquivo {JSON_PATH} não encontrado!")
         return
@@ -60,7 +61,6 @@ def atualizar():
     logger.info(f"Iniciando ciclo de validação para {len(data)} canais.")
     
     validos = {}
-    # Processamento paralelo eficiente
     with ThreadPoolExecutor(max_workers=10) as executor:
         resultados = executor.map(lambda item: validar_canal(item[0], item[1]), data.items())
         
@@ -68,10 +68,10 @@ def atualizar():
         if res:
             validos[res[0]] = res[1]
     
-    # Atualização atômica do cache
     if validos:
         m3u = ["#EXTM3U"]
         for c, u in validos.items():
+            # Aqui ele vai escrever o link original do seu JSON
             m3u.append(f'#EXTINF:-1, {c}\n{u}')
         
         buf = BytesIO()
@@ -92,19 +92,16 @@ def home():
 
 @app.route('/lista.m3u')
 def m3u():
-    senha = request.args.get('senha')
-    if senha != "admin": return "Acesso Negado", 403
+    if request.args.get('senha') != "admin": return "Acesso Negado", 403
     with lock:
         if not state["m3u"]: return "Aguardando processamento inicial...", 503
         return Response(state["m3u"], mimetype="application/x-mpegurl", headers={"Content-Encoding": "gzip"})
 
 def loop_background():
-    """Loop infinito com espera inicial."""
     while True:
         atualizar()
-        time.sleep(3600) # Atualiza a cada hora para poupar recursos
+        time.sleep(3600)
 
 if __name__ == "__main__":
-    # Inicia o worker em segundo plano
     threading.Thread(target=loop_background, daemon=True).start()
     app.run(host='0.0.0.0', port=10000)
