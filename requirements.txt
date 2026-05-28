@@ -1,6 +1,5 @@
-flask
-requests
-schedule
+Flask
+Flask-SQLAlchemy
+Flask-Login
+Werkzeug
 gunicorn
-flask-sqlalchemy
-flask-login
