@@ -8,17 +8,14 @@
         :root { --netflix-red: #E50914; --bg-dark: #141414; }
         body { background-color: var(--bg-dark); color: white; font-family: 'Helvetica Neue', Arial, sans-serif; }
         
-        /* Navbar */
         .navbar { background: linear-gradient(to bottom, rgba(0,0,0,0.7) 10%, rgba(0,0,0,0)); padding: 20px 50px; }
         .nav-link { color: white !important; font-size: 0.9rem; margin-right: 20px; }
 
-        /* Categorias e Linhas */
         .category-row { margin-bottom: 40px; padding-left: 50px; }
         .row-title { font-size: 1.4rem; font-weight: bold; margin-bottom: 15px; }
         .movie-slider { display: flex; overflow-x: auto; gap: 10px; scroll-behavior: smooth; }
         .movie-slider::-webkit-scrollbar { display: none; }
 
-        /* Cards */
         .card { min-width: 250px; height: 140px; background: #000; border: none; cursor: pointer; transition: 0.4s; border-radius: 4px; overflow: hidden; }
         .card:hover { transform: scale(1.15); z-index: 10; border: 2px solid white; }
         .card img { width: 100%; height: 100%; object-fit: cover; }
@@ -28,20 +25,19 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <a class="navbar-brand text-danger fw-bold" href="#">NETFLIX</a>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="#">Início</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Séries</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Filmes</a></li>
-            </ul>
-        </div>
     </nav>
 
     <div style="height: 100px;"></div>
 
-    {% set generos = ['Ação', 'Séries', 'Animes'] %}
+    {# Lógica para extrair todos os gêneros únicos automaticamente #}
+    {% set todos_generos = [] %}
+    {% for id, item in catalogo.items() %}
+        {% if item.genero not in todos_generos %}
+            {% set _ = todos_generos.append(item.genero) %}
+        {% endif %}
+    {% endfor %}
     
-    {% for genero_alvo in generos %}
+    {% for genero_alvo in todos_generos %}
     <div class="category-row">
         <div class="row-title">{{ genero_alvo }}</div>
         <div class="movie-slider">
