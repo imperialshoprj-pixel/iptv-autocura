@@ -1,121 +1,97 @@
-import requests
-import json
-import time
-import threading
-import logging
-import gzip
-import os
+import requests, json, time, threading, logging, gzip, os
 from io import BytesIO
 from flask import Flask, jsonify, Response, request, abort
 from concurrent.futures import ThreadPoolExecutor
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
-# --- Configurações ---
+# --- Configurações Otimizadas ---
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 app = Flask(__name__)
 
-# Cache de estado
-canais_ativos = {}
-m3u_cache = b""
+# Cache de estado com acesso thread-safe
+state = {"canais": {}, "m3u": b"", "last_update": "N/A"}
 lock = threading.Lock()
-SENHA_PROTECAO = "minha_senha_secreta" 
+SENHA_PROTECAO = os.getenv("SENHA_PROTECAO", "minha_senha_secreta")
+JSON_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'canais.json')
 
-# Caminho absoluto
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-JSON_PATH = os.path.join(BASE_DIR, 'canais.json')
-
-# Sessão otimizada com User-Agent de Desktop
+# Session com Pool de Conexões de Alta Performance
 session = requests.Session()
-adapter = HTTPAdapter(
-    pool_connections=100, 
-    pool_maxsize=100,
-    max_retries=Retry(total=2, backoff_factor=0.5, status_forcelist=[500, 502, 503, 504])
-)
-session.mount("http://", adapter)
+retries = Retry(total=2, backoff_factor=0.3, status_forcelist=[500, 502, 503, 504])
+adapter = HTTPAdapter(pool_connections=50, pool_maxsize=50, max_retries=retries)
 session.mount("https://", adapter)
-session.headers.update({'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36'})
+session.headers.update({
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+    'Accept': '*/*'
+})
 
-def carregar_config():
+def testar_link(item):
+    canal_id, url = item
     try:
-        with open(JSON_PATH, 'r', encoding='utf-8') as f:
-            return json.load(f)
-    except Exception as e:
-        logging.error(f"ERRO ao ler canais.json: {e}")
-        return {}
-
-def testar_link(canal_info):
-    canal_id, url = canal_info
-    try:
-        res = session.head(url, timeout=(3, 7), allow_redirects=True)
-        if res.status_code == 200:
-            return canal_id, url
-        
-        res = session.get(url, timeout=(3, 7), stream=True, allow_redirects=True)
-        if res.status_code == 200:
-            res.close()
-            return canal_id, url
-        return canal_id, None
+        # Timeout curto para não prender a thread
+        res = session.get(url, timeout=(2, 5), stream=True)
+        is_ok = 200 <= res.status_code < 400
+        res.close()
+        return (canal_id, url) if is_ok else None
     except:
-        return canal_id, None
-
-def gerar_m3u_comprimido(canais):
-    m3u = ["#EXTM3U"]
-    for cid, url in canais.items():
-        m3u.append(f'#EXTINF:-1, {cid}')
-        m3u.append(url)
-    buf = BytesIO()
-    with gzip.GzipFile(fileobj=buf, mode='wb') as f:
-        f.write("\n".join(m3u).encode('utf-8'))
-    return buf.getvalue()
+        return None
 
 def atualizar_links():
-    global canais_ativos, m3u_cache
-    config = carregar_config()
-    if not config: return
-    
-    with ThreadPoolExecutor(max_workers=50) as executor:
-        resultados = executor.map(testar_link, config.items())
-    
-    novos_canais = {cid: url for cid, url in resultados if url}
-    
-    with lock:
-        if novos_canais:
-            canais_ativos = novos_canais
-            m3u_cache = gerar_m3u_comprimido(novos_canais)
-            logging.info(f"Monitoramento concluído: {len(canais_ativos)} canais.")
+    try:
+        if not os.path.exists(JSON_PATH): return
+        with open(JSON_PATH, 'r', encoding='utf-8') as f:
+            config = json.load(f)
+        
+        # Pool de threads para validação massiva
+        with ThreadPoolExecutor(max_workers=60) as executor:
+            resultados = list(filter(None, executor.map(testar_link, config.items())))
+        
+        # Gerar M3U eficientemente
+        m3u = ["#EXTM3U"]
+        for cid, url in resultados:
+            m3u.append(f'#EXTINF:-1, {cid}')
+            m3u.append(url)
+        
+        # Compressão Gzip em memória
+        buf = BytesIO()
+        with gzip.GzipFile(fileobj=buf, mode='wb') as f:
+            f.write("\n".join(m3u).encode('utf-8'))
+        
+        with lock:
+            state["canais"] = dict(resultados)
+            state["m3u"] = buf.getvalue()
+            state["last_update"] = time.strftime('%H:%M:%S')
+            
+    except Exception as e:
+        logging.error(f"Erro no ciclo de atualização: {e}")
 
 @app.route('/lista.m3u')
 def gerar_m3u():
-    if request.args.get('senha') != SENHA_PROTECAO:
-        abort(403)
+    if request.args.get('senha') != SENHA_PROTECAO: abort(403)
     with lock:
-        if not m3u_cache:
-            return "Aguardando processamento...", 503
-        return Response(
-            m3u_cache, 
-            mimetype="application/x-mpegurl",
-            headers={
-                "Content-Encoding": "gzip",
-                "Content-Disposition": "attachment; filename=lista.m3u"
-            }
-        )
+        if not state["m3u"]: return "Processando...", 503
+        return Response(state["m3u"], mimetype="application/x-mpegurl", headers={
+            "Content-Encoding": "gzip",
+            "Content-Disposition": "attachment; filename=lista.m3u"
+        })
 
 @app.route('/')
 def home():
     with lock:
-        count = len(canais_ativos)
-    return jsonify({
-        "status": "online",
-        "canais_ativos": count,
-        "ultima_atualizacao": time.strftime('%H:%M:%S')
-    })
+        return jsonify({
+            "status": "online",
+            "total_canais": len(state["canais"]),
+            "ultima_atualizacao": state["last_update"]
+        })
 
-def loop_monitoramento():
+def daemon_worker():
+    # Primeira execução imediata
+    atualizar_links()
     while True:
+        time.sleep(300) # Intervalo de 5 min
         atualizar_links()
-        time.sleep(300)
 
 if __name__ == "__main__":
-    threading.Thread(target=loop_monitoramento, daemon=True).start()
-    app.run(host='0.0.0.0', port=10000)
+    # Inicia o worker em background
+    threading.Thread(target=daemon_worker, daemon=True).start()
+    app.run(host='0.0.0.0', port=10000, threaded=True)
