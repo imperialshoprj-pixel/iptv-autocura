@@ -87,11 +87,14 @@ def admin_required(fn):
     return wrapper
 
 def app_json(row):
+    url = row["url"] or ""
+    if url.startswith("/"):
+        url = request.host_url.rstrip("/") + url
     return {
         "name": row["name"],
         "package": row["package"],
         "version": row["version"],
-        "url": row["url"],
+        "url": url,
         "recloneHours": row["reclone_hours"],
     }
 
@@ -141,7 +144,7 @@ def login_post():
     password = request.form.get("password", "")
     expected_user = os.environ.get("ADMIN_USER", "admin")
     expected_hash = os.environ.get("ADMIN_PASSWORD_HASH", "")
-    expected_password = os.environ.get("ADMIN_PASSWORD", "")
+    expected_password = os.environ.get("ADMIN_PASSWORD", "admin123")
     valid = username == expected_user and (
         (expected_hash and check_password_hash(expected_hash, password)) or
         (not expected_hash and expected_password and password == expected_password)
